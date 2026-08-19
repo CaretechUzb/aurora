@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_product_product_form_inherit">
+        <field name="name">product.product.product.form.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+<!--        <field name="inherit_id" ref="product.product_template_form_view"/>-->
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+<!--            <xpath expr="//page[@name='taxes_id']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//page[@name='invoice_policy']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+            <xpath expr="//page[@name='sales']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='inventory']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='purchase']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='detailed_type']" position="after">
+                <field name="calculation_type"/>
+                <!-- <field name="service_duration"/> -->
+                <field name="priority_color" widget="color"/>
+<!--                <field name="is_rx_possible"/>-->
+<!--                <field name="calc_ext_use_drug"/>-->
+<!--                <field name="pack_type_id" options="{'no_create':1,'no_open': True}"/>-->
+<!--                <field name="basic_type_id" options="{'no_create':1,'no_open': True}"/>-->
+                <!-- <field name="category_selection"/> -->
+                <field name="medical_classification_id" options="{'no_create':1,'no_open': True}"/>
+<!--                <field name="tx_meds"/>-->
+<!--                <field name="rx_out_host"/>-->
+<!--                <field name="instruction"/>-->
+<!--                <field name="set_test"/>-->
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <field name="GTIN"/>
+                <field name="gtin_id"/>
+                <field name="snomed_id" options="{'no_create_edit': True}"/>
+                <field name="categ_is_his" invisible="1" options="{'no_create':1,'no_open': True}"/>
+                <field name="product_type" invisible="1"/>
+                <field name="product_type_selection" invisible="1"/>
+                <field name="product_properties" nolabel="1"
+                    hideKanbanOption="0" />                
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_product_product_tree_inherit">
+        <field name="name">product.product.product.tree.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="basic_type_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_product_product">
+        <field name="name">Product Product</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_product_product_tree_inherit')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_product_product_form_inherit')})]"/>
+
+        <field name="context">{'search_default_filter_child': 1}</field>
+    </record>
+</odoo>

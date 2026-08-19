@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_prescription_management">
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                <style>
+                    .page {
+                        margin: 20px;
+                    }
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    th, td {
+                        padding: 8px;
+                        text-align: left;
+                        border: 1px solid #ddd;
+                    }
+                    th {
+                        background-color: #f2f2f2;
+                    }
+                </style>
+            </head>
+            <body>
+                <main>
+                    <div class="page">
+                        <h2 style="text-align: center;">Services</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>№</th> <!-- Counter Column -->
+                                    <th>Name</th>
+                                    <th>Price Range</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Initialize counter variable -->
+                                <t t-set="counter" t-value="0"/>
+
+                                <t t-foreach="docs" t-as="doc">
+                                    <!-- Increment counter for each iteration -->
+                                    <t t-set="counter" t-value="counter + 1"/>
+                                    <tr>
+                                        <td><t t-esc="counter"/></td> <!-- Display Counter -->
+                                        <td><t t-esc="doc.name"/></td>
+                                        <td><t t-esc="doc.doctor_prices_range"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </body>
+        </html>
+    </template>
+</odoo>

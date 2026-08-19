@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_room_form" model="ir.ui.view">
+        <field name="name">his.room.form</field>
+        <field name="model">his.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <field name="active" invisible="1"/>
+                        <field name="title"/>
+                        <field name="building_number"/>
+                        <field name="floor"/>
+                        <field name="type"/>
+                        <field name="number"/>
+                        <field name="category_id"/>
+                        <field name="department_id"/>
+                        <field name="company_id"/>                        
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_room_tree" model="ir.ui.view">
+        <field name="name">his.room.tree</field>
+        <field name="model">his.room</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="not active">
+                <field name="active" invisible="1"/>
+                <field name="title"/>
+                <field name="number"/>
+                <field name="type"/>
+                <field name="category_id"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_room_search" model="ir.ui.view">
+        <field name="name">his.room.search</field>
+        <field name="model">his.room</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="title"/>
+                <field name="number"/>
+                <field name="category_id"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <searchpanel>
+                    <field name="company_id"/>
+                    <field name="type"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_room" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.room</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_room_search"/>
+    </record>
+
+    <menuitem id="menu_rooms"
+              name="Rooms"
+              parent="his.menu_room_configurations"
+              action="action_room"
+              groups="his.group_his_admin,his.group_his_manager"
+              sequence="3"/>
+</odoo>

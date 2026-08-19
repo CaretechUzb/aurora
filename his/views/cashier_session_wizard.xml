@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Cashier Session Wizard Form View -->
+    <record id="view_cashier_session_wizard_form" model="ir.ui.view">
+        <field name="name">his.cashier_session_wizard.form</field>
+        <field name="model">his.cashier_session_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cashier Session Report">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="session_number" readonly="1"/>
+                        </h1>
+                    </div>
+                    
+                    <!-- Session Information -->
+                    <group>
+                        <group>
+                            <field name="cashier_id" readonly="1"/>
+                            <field name="opening_datetime" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Starting Balance -->
+                    <div class="oe_clear"></div>
+                    <div class="alert alert-info" role="alert">
+                        <strong>Starting Balance</strong>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="starting_balance_cash" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Payments Received -->
+                    <div class="oe_clear"></div>
+                    <div class="alert alert-success" role="alert">
+                        <strong>Payments Received</strong>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="total_payments_received" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <group>
+                            <div class="alert alert-light" role="alert">
+                                <strong>Invoice Payments</strong>
+                            </div>
+                            <field name="payments_invoices_total" readonly="1"/>
+                            <field name="payments_invoices_cash" readonly="1"/>
+                            <field name="payments_invoices_credit_card" readonly="1"/>
+                            <field name="payments_invoices_acquiring" readonly="1"/>
+                        </group>
+                        <group>
+                            <div class="alert alert-light" role="alert">
+                                <strong>Other Payments</strong>
+                            </div>
+                            <field name="payments_deposits" readonly="1"/>
+                            <field name="other_receipts_cash" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Expenses -->
+                    <div class="oe_clear"></div>
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Expenses</strong>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="total_expenses" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <group>
+                            <field name="deposit_returns" readonly="1"/>
+                            <field name="clinic_expenses_cash" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Payment Method Details -->
+                    <div class="oe_clear"></div>
+                    <div class="alert alert-info" role="alert">
+                        <strong>Payment Method Details</strong>
+                    </div>
+                    <field name="payment_method_line_ids" nolabel="1">
+                        <tree string="Payment Methods" editable="false" decoration-primary="payment_type == 'ccd'" decoration-warning="payment_type == 'acq'" decoration-success="payment_type == 'deposit'" decoration-danger="payment_type == 'transfer'">
+                            <field name="payment_type"/>
+                            <field name="name"/>
+                            <field name="journal_code"/>
+                            <field name="total_amount" sum="Total Amount"/>
+                            <field name="payment_count" sum="Total Count"/>
+                            <field name="transfer_out_amount" sum="Transfer Out" optional="hide"/>
+                            <field name="transfer_in_amount" sum="Transfer In" optional="hide"/>
+                            <field name="transfer_out_count" sum="Out Count" optional="hide"/>
+                            <field name="transfer_in_count" sum="In Count" optional="hide"/>
+                        </tree>
+                    </field>
+                                        
+                    <!-- Session Totals -->
+                    <div class="oe_clear"></div>
+                    <div class="alert alert-primary" role="alert">
+                        <strong>Session Totals</strong>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="session_total" readonly="1"/>
+                            <field name="cash_balance" readonly="1"/>
+                            <field name="session_close_difference_balance" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Buttons -->
+                    <div class="oe_clear"></div>
+                    <footer>
+                        <button name="action_refresh_payment_methods" string="Refresh Payment Methods" type="object" class="btn-info"/>
+                        <button name="action_print_report" string="Print Report" type="object" class="btn-primary"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Cashier Session Wizard Tree View -->
+    <record id="view_cashier_session_wizard_tree" model="ir.ui.view">
+        <field name="name">his.cashier_session_wizard.tree</field>
+        <field name="model">his.cashier_session_wizard</field>
+        <field name="arch" type="xml">
+            <tree string="Cashier Session Reports">
+                <field name="session_number"/>
+                <field name="cashier_id"/>
+                <field name="opening_datetime"/>
+                <field name="session_total"/>
+                <field name="cash_balance"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Cashier Session Wizard Search View -->
+    <record id="view_cashier_session_wizard_search" model="ir.ui.view">
+        <field name="name">his.cashier_session_wizard.search</field>
+        <field name="model">his.cashier_session_wizard</field>
+        <field name="arch" type="xml">
+            <search string="Search Cashier Session Reports">
+                <field name="session_number"/>
+                <field name="cashier_id"/>
+                <field name="opening_datetime"/>
+                <filter string="Today" name="today" domain="[('opening_datetime', '&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('opening_datetime', '&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <filter string="This Week" name="this_week" domain="[('opening_datetime', '&gt;=', (context_today() - datetime.timedelta(days=context_today().weekday())).strftime('%Y-%m-%d')), ('opening_datetime', '&lt;=', (context_today() + datetime.timedelta(days=6-context_today().weekday())).strftime('%Y-%m-%d'))]"/>
+                <filter string="This Month" name="this_month" domain="[('opening_datetime', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01')), ('opening_datetime', '&lt;=', (datetime.datetime.now().replace(day=1) + datetime.timedelta(days=32)).replace(day=1) - datetime.timedelta(days=1)).strftime('%Y-%m-%d')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Cashier" name="group_cashier" context="{'group_by': 'cashier_id'}"/>
+                    <filter string="Date" name="group_date" context="{'group_by': 'opening_datetime:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Cashier Session Wizard Action -->
+    <record id="action_cashier_session_wizard" model="ir.actions.act_window">
+        <field name="name">Cashier Session Report</field>
+        <field name="res_model">his.cashier_session_wizard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_cashier_session_wizard_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Cashier Session Report
+            </p>
+            <p>
+                Generate detailed reports for cashier sessions including payments, expenses, and balances.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_cashier_session_wizard"
+              name="Cashier Session Report"
+              parent="his.menu_registration_main"
+              action="action_cashier_session_wizard"
+              sequence="10"/>
+
+</odoo>

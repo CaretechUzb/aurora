@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="his_medicine_prescription_cancel_reson_view_tree" model="ir.ui.view">
+        <field name="name">his.medicine_prescription_cancel_reson.view.tree</field>
+        <field name="model">his.medicine_prescription_cancel_reason</field>
+        <field name="arch" type="xml">
+            <tree string="Medicine Prescription Cancel Reson">
+                <field name="name" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="his_medicine_prescription_cancel_reson_view_form" model="ir.ui.view">
+        <field name="name">his.medicine_prescription_cancel_reson.view.form</field>
+        <field name="model">his.medicine_prescription_cancel_reason</field>
+        <field name="arch" type="xml">
+            <form string="Medicine Prescription Cancel Reson">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="his_medicine_prescription_cancel_reson_action" model="ir.actions.act_window">
+        <field name="name">Medicine Prescription Cancel Reson</field>
+        <field name="res_model">his.medicine_prescription_cancel_reason</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="his_medicine_prescription_cancel_reson_menu"
+        name="Medicine Prescription Cancel Reson" parent="his.menu_prescription_configurations"
+        action="his_medicine_prescription_cancel_reson_action" sequence="10" />
+
+</odoo>

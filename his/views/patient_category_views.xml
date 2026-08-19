@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View his.patient_category View Tree -->
+    <record id="view_his_patient_category_tree" model="ir.ui.view">
+        <field name="name">view.his.patient_category.tree</field>
+        <field name="model">his.patient_category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_his_patient_category_form" model="ir.ui.view">
+        <field name="name">view.his.patient_category.form</field>
+        <field name="model">his.patient_category</field>
+        <field name="arch" type="xml">
+            <form string="His Patient_category">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Name..."/>                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_his_patient_category_search" model="ir.ui.view">
+        <field name="name">view.his.patient_category.search</field>
+        <field name="model">his.patient_category</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action his.patient_category -->
+    <record id="action_his_patient_category" model="ir.actions.act_window">
+        <field name="name">Patient category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.patient_category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new His Patient_category.
+            </p>
+        </field>
+    </record>
+    <menuitem
+            id="menu_patient_category"
+            name="Patient category"
+            action="action_his_patient_category"
+            parent="menu_patient_main"
+            sequence="2"/>
+
+</odoo>

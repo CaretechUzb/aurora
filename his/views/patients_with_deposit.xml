@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_patients_with_depozit_tree" model="ir.ui.view">
+        <field name="name">patients.with.depozit.tree</field>
+        <field name="model">his.patients_with_depozit</field>
+        <field name="arch" type="xml">
+            <tree string="Patients with Depozit" js_class="list_handle_change" create="false" edit="false" delete="false">
+                <field name="partner_id" />
+                <field name="company_id" />
+                <field name="phone_number" />
+                <field name="date" />
+                <field name="deposit" />
+                <field name="last_top_up_by" />
+                <field name="last_top_up_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="search_patients_with_depozit" model="ir.ui.view">
+        <field name="name">patients.with.depozit.search</field>
+        <field name="model">his.patients_with_depozit</field>
+        <field name="arch" type="xml">
+            <search string="Search Patients with Depozit">
+                <field name="partner_id" />
+                <field name="company_id" />
+                <field name="phone_number" />
+                <field name="last_top_up_by" />
+            </search>
+        </field>
+    </record>
+    <record id="action_patients_with_depozit" model="ir.actions.act_window">
+        <field name="name">Patients with Depozit</field>
+        <field name="res_model">his.patients_with_depozit</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{
+            'selectionChangeCallback': 'action_open_patient_total_view'}
+        </field>
+    </record>
+    <menuitem id="menu_patients_with_depozit" name="Patients with Depozit"
+        groups="his.group_his_manager"
+        parent="his.menu_patient_main" action="action_patients_with_depozit" />
+
+
+</odoo>

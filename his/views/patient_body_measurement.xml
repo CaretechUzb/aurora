@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_patient_body_measurement_edit_form" model="ir.ui.view">
+        <field name="name">his.proxy.patient_body_measurement_edit.form</field>
+        <field name="model">his.patient_body_measurement</field>
+        <field name="arch" type="xml">
+            <form>
+                <group class="items-wrapper">
+                    <group invisible="1">
+                        <field name="patient_visit_id"/>
+                        <field name="active"/>
+                        <field name="company_id"/>
+                    </group>
+                    <group>
+                        <field name="height"></field>
+                        <field name="weight"></field>
+                        <field name="weight_uom"></field>
+                        <field name="systolic_blood_pressure"></field>
+                        <field name="diastolic_blood_pressure_max"></field>
+                        <field name="heart_rate"></field>
+                        <field name="temperature"></field>
+                        <field name="respiration_rate"></field>
+                        <field name="gestational_age"></field>
+                        <field name="last_menstrual_period"></field>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_uom" name="Units" parent="his.menu_other_configurations"
+        sequence="40" />
+    <menuitem id="menu_uom_category" name="Units of Measure categories" parent="menu_uom"
+        action="uom.product_uom_categ_form_action" sequence="1" />
+    <menuitem id="menu_uom_uom" name="Units of Measures" parent="menu_uom"
+        action="uom.product_uom_form_action" sequence="40" />
+</odoo>

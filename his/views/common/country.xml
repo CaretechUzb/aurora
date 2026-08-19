@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    <record id="view_res_country_custom_form" model="ir.ui.view">-->
+    <!--        <field name="model">res.country</field>-->
+    <!--        <field name="inherit_id" ref="base.view_country_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <record id="action_res_country_custom" model="ir.actions.act_window">
+        <field name="name">Country</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="view_ids" eval="[(5, 0, 0),-->
+        <!--                (0, 0, {'view_mode': 'form', 'view_id': ref('view_res_country_custom_form')})]"/>-->
+    </record>
+
+    <record id="action_res_country_state_custom" model="ir.actions.act_window">
+        <field name="name">States</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country.state</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="view_ids" eval="[(5, 0, 0),-->
+        <!--                (0, 0, {'view_mode': 'form', 'view_id': ref('view_res_country_custom_form')})]"/>-->
+    </record>
+
+
+    <menuitem id="menu_res_country_custom" name="Country" parent="his.menu_addresses_database"
+              action="action_res_country_custom" sequence="1"/>
+
+    <menuitem id="menu_res_country_state_custom" name="Country States(Region)" parent="his.menu_addresses_database"
+              action="action_res_country_state_custom" sequence="2"/>
+
+</odoo>

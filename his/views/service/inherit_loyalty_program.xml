@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.actions.act_window" id="action_loyalty_program_inherit">
+        <field name="name">Discount</field>
+        <field name="res_model">loyalty.program</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('loyalty.loyalty_program_view_tree')})]"/>
+    </record>    
+</odoo>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_employee_form_inherit">
+        <field name="name">hr.employee.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='department_ids']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='department_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+<!--            <xpath expr="//field[@name='company_id']" position="attributes">-->
+<!--                <attribute name="invisible">True</attribute>-->
+<!--            </xpath>-->
+            <!-- <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath> -->
+            <!-- <xpath expr="//field[@name='coach_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath> -->
+
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="position_type" invisible="1"/>
+                <field name="can_online_appointment" attrs="{'invisible': [('position_type', '!=', 'doctor')]}"/>
+                <field name="work_experience"/>
+                <field name="pinfl"/>
+                <field name="academic_rank"/>
+<!--                <field name="sorting_to_website"/>-->
+                <field name="short_desc" string="Short Info" widget="ck-editor"/>
+                <field class="table-fixsed" name="department_ids">
+                    <tree string="Departments" editable="bottom">
+                        <field name="department_id"/>
+                        <field name="company_id" />
+                    </tree>
+                </field>
+                <field class="image-field-cobe" name="signature" widget="image"/>
+                <field class="image-field-cobe" name="fingerprint" widget="image"/>
+            </xpath>
+
+            <xpath expr="//field[@name='coach_id']" position="after">
+                <field name="specialization_ids" widget="many2many_tags"/>
+                <field name="info_description" widget="ck-editor"/>
+                <separator string="Doctor Profile"/>
+
+                <field
+                    name="doctor_appointment_type_ids"
+                    widget="many2many_tags"
+                />
+
+                <field name="doctor_language_ids" widget="many2many_tags"/>
+
+                <field name="doctor_target_group"/>
+
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_hr_employee_administration_section" model="ir.actions.act_window">
+        <field name="name">Employee</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_virtual', '=', False)]</field>
+    </record>
+    <menuitem id="menu_hr_employee_administration_section" name="Employee" parent="his.menu_user_management_main"
+              groups="his.group_his_admin,his.group_his_manager"
+              action="action_hr_employee_administration_section" sequence="1"/>
+
+
+    <record id="view_hr_employee_info_form_doctor" model="ir.ui.view">
+        <field name="name">hr.employee.info.form.doctor</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Information">
+                <group class="!tw-flex !tw-gap-4 !tw-p-4 tw-bg-gray-50" colspan="12" col="12">
+                    <!-- Left Panel - Doctor Profile -->
+                    <group class="tw-flex-[2] tw-bg-white tw-rounded-lg tw-shadow-md !tw-p-6" colspan="12" col="12">
+                        <div class="tw-flex tw-flex-col tw-items-center tw-gap-1 tw-pb-4 tw-border-b tw-border-gray-200">
+                            <field name="avatar_256" nolabel="1" widget="custom_avatar" readonly="1"/>
+                            <field name="name" nolabel="1" class="!tw-text-center !tw-font-bold !tw-text-2xl tw-text-gray-800" readonly="1"/>
+                            <field name="job_id" nolabel="1" class="!tw-text-center !tw-font-semibold !tw-text-lg tw-text-blue-600" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+                            <field string="📞" name="work_phone" readonly="1" class="!tw-text-center !tw-font-medium tw-text-teal-600"/>
+                        </div>
+
+                        <!-- Academic & Experience Section -->
+                        <div class="tw-mt-4 tw-space-y-3">
+                            <!-- Side by Side: Scholarly Knowledge and Work Experience -->
+                            <div class="tw-grid tw-grid-cols-2 tw-gap-3">
+                                <div class="tw-bg-blue-50 tw-rounded-md !tw-p-3 tw-border tw-border-blue-100">
+                                    <group colspan="12" col="12">
+                                        <field string="🎓 Scholarly Knowledge" name="academic_rank" readonly="1" class="!tw-font-medium"/>
+                                    </group>
+                                </div>
+
+                                <div class="tw-bg-green-50 tw-rounded-md !tw-p-3 tw-border tw-border-green-100">
+                                    <group class="field-row" colspan="12" col="12">
+                                        <field string="💼 Work Experience (years)" name="work_experience" readonly="1" class="!tw-font-medium"/>
+                                    </group>
+                                </div>
+                            </div>
+
+                            <!-- Doctor Description -->
+                            <div class="tw-bg-purple-50 tw-rounded-md !tw-p-3 tw-border tw-border-purple-100" style="width: fit-content; min-width: 100%;">
+                                <div class="o_form_label tw-block tw-font-semibold tw-text-sm tw-text-purple-800 tw-mb-2">📝 About Doctor</div>
+                                <group colspan="12" col="12">
+                                    <field name="info_description" widget="ck-editor" readonly='1' nolabel="1" style="height: auto; overflow: visible;"/>
+                                </group>
+                            </div>
+                        </div>
+                    </group>
+
+                    <!-- Right Panel - Schedule & Services -->
+                    <group class="tw-flex-[4] tw-bg-white tw-rounded-lg tw-shadow-md !tw-p-6" col="12">
+                        <!-- Working Schedule Section -->
+                        <div class="tw-mb-4 tw-bg-indigo-50 tw-rounded-md !tw-p-4 tw-border tw-border-indigo-100" style="width: fit-content; min-width: 100%;">
+                            <div class="o_form_label tw-block tw-font-semibold tw-text-base tw-text-indigo-800 tw-mb-3">📅 Working Schedule</div>
+                            <group col="12" colspan="12">
+                                <field name="working_perion_html" readonly="1" widget='html-viewer' nolabel="1" options="{'noIframe': true}" style="height: auto; overflow: visible;"/>
+                            </group>
+                        </div>
+
+                        <!-- Service Price List Section -->
+                        <div class="tw-bg-rose-50 tw-rounded-md !tw-p-4 tw-border tw-border-rose-100" style="width: fit-content; min-width: 100%;">
+                            <div class="o_form_label tw-block tw-font-semibold tw-text-base tw-text-rose-800 tw-mb-3">💰 Service Price List</div>
+                            <group col="12" colspan="12">
+                                <field name="service_price_list" readonly="1" nolabel="1" style="height: auto; overflow: visible;"/>
+                            </group>
+                        </div>
+
+                        <field name="company_id" invisible="1"/>
+                    </group>
+                </group>
+                <footer class="tw-bg-gray-50 tw-border-t tw-border-gray-200">
+                    <button string="Close" class="btn-primary tw-px-6 tw-py-2 tw-rounded-md tw-shadow-sm hover:tw-shadow-md tw-transition-all" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--    For Doctors Tree View-->
+    <record id="view_hr_employee_form_doctor" model="ir.ui.view">
+        <field name="name">hr.employee.form.doctor</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <form string="Doctors">
+                <group class="items-wrapper" colspan="12" col="12">
+                    <group col="12" colspan="1">
+                        <field name="avatar_256" nolabel="1" widget="custom_avatar" readonly="1"/>
+                        <field name="name" nolabel="1" class="!tw-text-center" readonly="1"/>
+                    </group>
+                    <group colspan="11" col="12">
+                        <group col="12" colspan="6">
+                            <field name="work_phone" readonly="1"/>
+                        </group>
+                        <group col="12" colspan="6">
+                            <field name="job_id" readonly="1" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group colspan="12" col="12">
+                            <field name="service_price_list" readonly="1"/>
+                        </group>
+                        <group colspan="12" col="12">
+                            <field name="info_description" widget="ck-editor"/>
+                        </group>
+                        <field name="company_id" invisible="1"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_employee_tree_doctor" model="ir.ui.view">
+        <field name="name">hr.employee.tree.doctor</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Doctors" create="0" delete="0">
+                <field name="name"/>
+                <field name="work_phone"/>
+                <field name="job_id"/>
+                <field name="company_id" invisible="1"/>
+                <field name="info_description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hr_employee_tree_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('view_hr_employee_tree_doctor')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('view_hr_employee_form_doctor')})]"/>
+        <field name="context">{'hide_archive': True}</field>
+
+    </record>
+    <menuitem id="menu_hr_employee_tree_doctor" name="Doctors" parent="his.menu_patients_main"
+              groups="his.group_his_admin,his.group_his_manager,his.group_his_register_ambulatory"
+              action="action_hr_employee_tree_doctor" sequence="4"/>
+    <menuitem
+            id="his_cashier_menu"
+            name="Cashier"
+            groups="his.group_his_admin,his.group_his_manager"
+            parent="his.menu_user_management_main"
+            sequence="5"/>
+    <menuitem
+            id="his_reports_menu"
+            name="Role Management"
+            groups="his.group_his_admin,his.group_his_manager"
+            parent="his.menu_user_management_main"
+            action="base_user_role.action_res_users_role_tree"
+            sequence="4"/>
+
+</odoo>

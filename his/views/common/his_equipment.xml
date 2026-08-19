@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_his_maintenance_equipment_form_inherit">
+        <field name="name">his.maintenance.equipment.form</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="room_id" options="{'no_edit': True,'no_create':True,'no_open':True}"/>
+            </xpath>
+            <xpath expr="//field[@name='location']" position="after">
+                <field name="is_his" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_his_maintenance_equipment_inherit" model="ir.actions.act_window">
+        <field name="name">HIS Equipments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_his', '=', True)]</field>
+        <field name="context">{'default_is_his': True}</field>
+    </record>
+</odoo>

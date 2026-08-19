@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Report Action Definition -->
+    <record id="action_prescription_management_report_form" model="ir.actions.report">
+        <field name="name">Prescription Management</field>
+        <field name="model">product.product</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">his.report_prescription_management</field>
+        <field name="report_file">his.report_prescription_management</field>
+        <field name="binding_model_id" ref="model_product_product"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="his.paper_format_his_prescription_management"/>
+    </record>
+
+</odoo>

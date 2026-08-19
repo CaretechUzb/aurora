@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_order_detail_report_form_v2" model="ir.actions.report">
+        <field name="name">Orders</field>
+        <field name="model">his.order_detail_wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">his.report_order_detail</field>
+        <field name="report_file">his.report_order_detail</field>
+        <field name="binding_model_id" ref="model_his_order_detail_wizard"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="his.paper_format_his_order_detail_v3"/>
+    </record>
+</odoo>

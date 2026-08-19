@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_position_type_service_category_form" model="ir.ui.view">
+        <field name="name">his.position_type_service_category.form</field>
+        <field name="model">his.position_type_service_category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="position_type"/>
+                        <field name="service_category"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_position_type_service_category_tree" model="ir.ui.view">
+        <field name="name">his.position_type_service_category.tree</field>
+        <field name="model">his.position_type_service_category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="position_type"/>
+                <field name="service_category"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_position_type_service_category_search" model="ir.ui.view">
+        <field name="name">his.position_type_service_category.search</field>
+        <field name="model">his.position_type_service_category</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="position_type"/>
+                <field name="service_category"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_position_type_service_category" model="ir.actions.act_window">
+        <field name="name">Position Type Service Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.position_type_service_category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_position_type_service_category_search"/>
+    </record>
+
+    <menuitem id="menu_position_type_service_categories"
+              name="Position Type Service Category"
+              parent="his.menu_other_configurations"
+              action="action_position_type_service_category"
+              sequence="13"/>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_saleorder_emr" model="ir.actions.report">
+        <field name="name">Order</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="use_emr">True</field>
+        <field
+            name="report_name"
+        >his.reception_invoice_emr</field>        
+        <field
+            name="print_report_name"
+        >(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="sale.model_sale_order" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

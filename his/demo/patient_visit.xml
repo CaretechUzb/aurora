@@ -1,0 +1,263 @@
+<odoo>
+    <data noupdate="1">
+        <record id="dep_1" model="hr.department">
+            <field name="name">Department 1</field>
+        </record>
+
+        <record id="dep_2" model="hr.department">
+            <field name="name">Department 2</field>
+        </record>
+        <record id='model_his_patient_visit_1' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_1'></field>
+            <field name='department_id' ref='dep_2'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>reservation</field>
+            <field name='date'>2024-08-16</field>
+            <field name='insurance_type'>public</field>
+            <field name='patient_status'>reserved</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_2' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_2'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>registration</field>
+            <field name='date'>2024-08-18</field>
+            <field name='insurance_type'>none</field>
+            <field name='patient_status'>diagnosed</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_3' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_3'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>registration</field>
+            <field name='date'>2024-08-19</field>
+            <field name='insurance_type'>none</field>
+            <field name='patient_status'>reserved</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_4' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_4'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>reservation</field>
+            <field name='date'>2024-08-20</field>
+            <field name='insurance_type'>none</field>
+            <field name='patient_status'>treated</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_5' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_5'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>registration</field>
+            <field name='date'>2024-08-21</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>diagnosed</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_6' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_6'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>registration</field>
+            <field name='date'>2024-08-22</field>
+            <field name='insurance_type'>none</field>
+            <field name='patient_status'>consulted</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_7' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_7'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>lab_test</field>
+            <field name='date'>2024-08-23</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>discharged</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_8' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_8'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>reservation</field>
+            <field name='date'>2024-08-23</field>
+            <field name='insurance_type'>none</field>
+            <field name='patient_status'>cancelled</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_9' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_9'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>registration</field>
+            <field name='date'>2024-08-25</field>
+            <field name='insurance_type'>public</field>
+            <field name='patient_status'>cancelled</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_10' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_10'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>lab_test</field>
+            <field name='date'>2024-08-26</field>
+            <field name='insurance_type'>public</field>
+            <field name='patient_status'>reserved</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_11' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_11'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>registration</field>
+            <field name='date'>2024-08-27</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>discharged</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_12' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_12'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>reservation</field>
+            <field name='date'>2024-08-28</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>diagnosed</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_13' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_13'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>reservation</field>
+            <field name='date'>2024-08-29</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>discharged</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_14' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_14'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>lab_test</field>
+            <field name='date'>2024-08-30</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>treated</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_15' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_15'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>lab_test</field>
+            <field name='date'>2024-08-30</field>
+            <field name='insurance_type'>public</field>
+            <field name='patient_status'>reserved</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_16' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_16'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>lab_test</field>
+            <field name='date'>2024-09-01</field>
+            <field name='insurance_type'>none</field>
+            <field name='patient_status'>treated</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_17' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_17'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>lab_test</field>
+            <field name='date'>2024-09-02</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>reserved</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_18' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_18'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>lab_test</field>
+            <field name='date'>2024-09-03</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>consulted</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_19' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_19'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>reservation</field>
+            <field name='date'>2024-09-04</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>treated</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>2</field>
+        </record>
+        <record id='model_his_patient_visit_20' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_20'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>True</field>
+            <field name='is_done'>False</field>
+            <field name='type_receipt'>reservation</field>
+            <field name='date'>2024-09-05</field>
+            <field name='insurance_type'>none</field>
+            <field name='patient_status'>consulted</field>
+            <field name='patient_type'>opd</field>
+            <field name='type_visit'>1</field>
+        </record>
+        <record id='model_his_patient_visit_21' model='his.patient_visit'>
+            <field name='patient_id' ref='model_his_patient_21'></field>
+            <field name='department_id' ref='dep_1'></field>
+            <field name='is_emergency'>False</field>
+            <field name='is_done'>True</field>
+            <field name='type_receipt'>registration</field>
+            <field name='date'>2024-09-06</field>
+            <field name='insurance_type'>private</field>
+            <field name='patient_status'>diagnosed</field>
+            <field name='patient_type'>er</field>
+            <field name='type_visit'>2</field>
+        </record>
+    </data>
+</odoo>

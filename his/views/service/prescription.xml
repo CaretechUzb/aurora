@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="prescription_view_form" model="ir.ui.view">
+        <field name="name">prescription.view.form</field>
+        <field name="model">his.prescription</field>
+        <field name="arch" type="xml">
+            <form string="Prescription" js_class="form_wo_cp"
+                options="{'no_duplicate': True, 'no_open': True, 'no_delete': True}">
+                <header>
+                    <button name="action_print" string="Print" type="object" class="btn-primary" />
+                </header>
+                <group class="items-wrapper" colspan="12" col="12">
+                    <field name="patient_visit_id" invisible="1" />
+                    <group col="12" colspan="6">
+                        <field name="patient_id" options='{"no_open": True}' />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="doctor_id" readonly="1" options='{"no_open": True}' />
+                    </group>
+                    <gorup col="12" colspan="12">
+                        <button name="action_add_medicine_prescription" string="Add medicine"
+                            type="object" class="btn-primary" />
+                    </gorup>
+
+                    <group colspan="12" col="12">
+                        <field name="medicine_ids">
+                            <tree delete="0" create="0">
+                                <field name="prescription_type" />
+                                <field name="medicine_names" />
+                                <field name="administration_method" />
+                                <field name="doctor_id" />
+                                <field name="sleep_regarding" />
+                                <field name="food_regarding" />
+                                <field name="is_in_medical_organization" />
+                                <field name="is_urgently" />
+                                <field name="reception_per_day" />
+                                <field name="notes" />
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="prescription_view_tree" model="ir.ui.view">
+        <field name="name">prescription.view.tree</field>
+        <field name="model">his.prescription</field>
+        <field name="arch" type="xml">
+            <tree string="Medicine prescriptions">
+                <field name="patient_visit_id" />
+                <field name="doctor_id" />
+            </tree>
+        </field>
+    </record>
+</odoo>

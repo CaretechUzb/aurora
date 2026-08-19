@@ -1,0 +1,84 @@
+.patient-modal {
+  .fa-external-link {
+    display: none !important;
+  }
+}
+
+.input-translate-no-margin {
+  input {
+    margin: 0 !important;
+  }
+}
+
+.oe_chatter {
+  .o_ChatterTopbar_button {
+    &.o-active {
+      background: #1d2c35 !important;
+    }
+
+    &.btn-odoo {
+      background: #1d2c35 !important;
+    }
+  }
+
+  .o_ChatterContainer {
+    @media (min-width: 1600px) {
+      max-width: 100% !important;
+    }
+  }
+}
+
+.modal-title {
+  color: var(--Main-Main-Text, #091e42) !important;
+  font-size: 20px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: end !important;
+  gap: 15px !important;
+}
+
+.modal-footer {
+  .btn-primary {
+    background: #0a53be !important;
+    color: white !important;
+  }
+}
+
+.o_component_with_search_panel {
+  align-items: inherit;
+}
+
+//.btn-close {
+//  background-image: url("/his_theme/static/src/img/xmark-solid.svg");
+//  transition: all 0.5s;
+//}
+
+.o_menu_brand[data-section="124"] {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.patient-registration {
+  .order_detail_wizard_ids_many2many,
+  .o_list_record_remove,
+  .o_field_x2many_list_row_add {
+    display: none !important;
+  }
+}
+
+.order_wizard {
+  .order_detail_wizard_ids_many2many,
+  .o_list_record_remove,
+  .o_field_x2many_list_row_add {
+    display: none !important;
+  }
+}
+
+.uic_oe_chatter {
+  @extend .oe_chatter
+}

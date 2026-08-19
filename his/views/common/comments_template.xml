@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_comments_template_form" model="ir.ui.view">
+        <field name="name">his.comments_template.form</field>
+        <field name="model">his.comments_template</field>
+        <field name="arch" type="xml">
+            <form>
+                <group colspan="12" col="12" class="items-wrapper">
+                    <field name="type" widget="radio"/>
+                    <field name="name"/>
+                    <field name="comment"/>
+                    <field name="department_id" attrs="{'invisible': [('type', '!=', 'dept')]}"/>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="view_comments_template_formv2" model="ir.ui.view">
+        <field name="name">his.comments_template.form</field>
+        <field name="model">his.comments_template</field>
+        <field name="arch" type="xml">
+            <form>
+                <group colspan="12" col="12" class="items-wrapper">
+                    <field name="type" widget="radio"/>
+                    <field name="name"/>
+                    <field name="comment"/>
+                    <field name="department_id" attrs="{'invisible': [('type', '!=', 'dept')]}"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_comments_template_formv3" model="ir.ui.view">
+        <field name="name">his.comments_template.form</field>
+        <field name="model">his.comments_template</field>
+        <field name="arch" type="xml">
+            <form>
+                <group colspan="12" col="12" class="items-wrapper">
+                    <field name="type" widget="radio"/>
+                    <field name="name"/>
+                    <field name="comment"/>
+                    <field name="department_id" attrs="{'invisible': [('type', '!=', 'dept')]}"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_comments_template_tree" model="ir.ui.view">
+        <field name="name">his.comments_template.tree</field>
+        <field name="model">his.comments_template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="department_id"/>
+                <field name="type" invisible="1"/>
+                <field name="name"/>
+                <field name="comment"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_comments_template_search" model="ir.ui.view">
+        <field name="name">his.comments_template.search</field>
+        <field name="model">his.comments_template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="comment"/>
+                <field name="department_id"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_comments_template" model="ir.actions.act_window">
+        <field name="name">Comments Template</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.comments_template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_comments_template_search"/>
+    </record>
+
+    <!-- <menuitem id="menu_comments_templates" name="Comments Template" parent="his.menu_other_configurations"
+              action="action_comments_template" sequence="23"/> -->
+</odoo>

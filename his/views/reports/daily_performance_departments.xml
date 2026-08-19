@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_proxy_department_performance_tree" model="ir.ui.view">
+        <field name="name">his.proxy_department_performance.tree</field>
+        <field name="model">his.department_performance</field>
+        <field name="arch" type="xml">
+            <tree js_class="list_handle_change" create="0">
+                <field name="department_id"/>
+                <field name="order_count"/>
+                <field name="number_of_patient"/>
+                <field name="total_performance"/>
+                <field name="discount_amount"/>
+                <field name="total_amount"/>
+                <field name="visit_date"/>
+                <button name="action_show_report" type="object" string="Show details" class="btn btn-primary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_department_performance_search" model="ir.ui.view">
+        <field name="name">his.department_performance.search</field>
+        <field name="model">his.department_performance</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel>
+                    <field name="department_id"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_department_performance" model="ir.actions.act_window">
+        <field name="name">Daily Performance Review</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.department_performance</field>
+        <field name="view_mode">tree</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_proxy_department_performance_tree')})]"/>
+        <field name="search_view_id" ref="his.view_department_performance_search"/>
+        <!-- <field name="context">{'search_default_filter_child': 1, 'use_custom_search': '1'}</field> -->
+    </record>
+
+    <menuitem id="menu_billing_report" name="Billing Report" parent="his.menu_patients_main" sequence="3"/>
+
+    <menuitem id="menu_department_performance" name="Daily Performance Review"
+              groups="his.group_his_admin,his.group_his_manager"
+              parent="his.menu_billing_report" action="action_department_performance" sequence="1"/>
+
+</odoo>

@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="his_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.his</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="15"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="HIS" string="HIS" data-key="his">
+                    <!-- Localization Settings Section -->
+                    <div id="his_localization">
+                        <h2>Localization</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="his_content_lang_id"/>
+                                    <div class="text-muted">
+                                        Default language for extracting content from translatable fields.
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="his_content_lang_id"
+                                               options="{'no_create': True, 'no_create_edit': True}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- EMR Section -->
+                    <div id="his_emr">
+                        <h2>EMR</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="reception_invoice_emr"/>
+                                    <field name="reception_invoice_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="cashier_cheque_emr"/>
+                                    <field name="cashier_cheque_emr"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="print_button_template_ids"/>
+                                    <field name="print_button_template_ids" widget="many2many_tags"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="calculator_emr" />
+                                    <field name="calculator_emr" />
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="receipt_with_debt_emr"/>
+                                    <field name="receipt_with_debt_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="top_up_customer_emr"/>
+                                    <field name="top_up_customer_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="return_customer_emr"/>
+                                    <field name="return_customer_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="prescription_emr"/>
+                                    <field name="prescription_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="prescription_print_template"/>
+                                    <field name="prescription_print_template"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="reception_invoice_with_coverer_emr"/>
+                                    <field name="reception_invoice_with_coverer_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="require_patient_guardian"/>
+                                    <field name="require_patient_guardian"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="restrict_product_selection_in_registration"/>
+                                    <field name="restrict_product_selection_in_registration"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="check_patient_name"/>
+                                    <field name="check_patient_name"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="deposit_top_up_account_id"/>
+                                    <field name="deposit_top_up_account_id"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="deposit_return_account_id"/>
+                                    <field name="deposit_return_account_id"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="cashier_report_emr"/>
+                                    <field name="cashier_report_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="payment_history_print_emr"/>
+                                    <field name="payment_history_print_emr"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane right_emr">
+                                    <label for="inkasso_account_id"/>
+                                    <field name="inkasso_account_id"/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="allow_negative_transfer"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="allow_negative_transfer"/>
+                                    <div class="text-muted">
+                                        Allow cash transfers even when the cash balance is insufficient
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_payment_method_line"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_payment_method_line"/>
+                                    <div class="text-muted">
+                                        Show Payment Method field in Cash In/Out wizard
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="require_analytic_account_for_cash_in"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="require_analytic_account_for_cash_in"/>
+                                    <div class="text-muted">
+                                        Make the Analytic Account field mandatory for Cash In transactions
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="require_analytic_account_for_cash_out"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="require_analytic_account_for_cash_out"/>
+                                    <div class="text-muted">
+                                        Make the Analytic Account field mandatory for Cash Out transactions
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="allow_dosage_selection"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="allow_dosage_selection"/>
+                                    <div class="text-muted">
+                                        Allow selecting predefined dosages on prescription instead of manual entry.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="block_cancel_invoice_when_service_done"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="block_cancel_invoice_when_service_done"/>
+                                    <div class="text-muted">
+                                        Block invoice cancellation when any related service is already marked as done.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Referral Source Settings -->
+                    <div id="referral_is_required_view_id">
+                        <h2>Referral Source Settings</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="referral_is_required"/>
+                                    <div class="text-muted">
+                                        Referral Source is Required?
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="referral_is_required"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="max_discount_for_referral"/>
+                                    <div class="text-muted">
+                                        Max Allowed Discount for Referral Bonus (%)
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="max_discount_for_referral"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="disable_referral_fallback_to_main_visit"/>
+                                    <div class="text-muted">
+                                        Disable referral fallback to main visit
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="disable_referral_fallback_to_main_visit"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="patient_required_field_ids">
+                        <h2>Required patient fields</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left">
+                                    <label for="patient_required_field_ids"/>
+                                </div>
+                                <div class="o_setting_right">
+                                    <field name="patient_required_field_ids"
+                                        widget="many2many_tags"
+                                        options="{'no_create': True,
+                                                    'no_create_edit': True,
+                                                    'no_open': True}"
+                                        context="{'tree_view_ref': 'his.ir_model_fields_tree_patient_required'}"/>
+                                    <p class="text-muted">
+                                        Only the selected fields will be treated as mandatory
+                                        when registering a patient.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="duplicate_patient_detection">
+                        <h2>Duplicate Patient Detection</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="identifying_similar_patients_trgm_limit"/>
+                                    <div class="text-muted">
+                                        pg_trgm similarity threshold (0.0–1.0, default 0.3) used when searching for duplicate patients by name.
+                                        Lower values match more loosely — more candidate duplicates are surfaced, at the cost of more false positives.
+                                        Higher values require closer name matches — fewer candidates and fewer false positives, but near-duplicates may be missed.
+                                        Values outside 0.0–1.0 are ignored and the default 0.3 is used.
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="identifying_similar_patients_trgm_limit"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="identifying_similar_patients_min_matches_with_key"/>
+                                    <div class="text-muted">
+                                        Minimum name positions that must match when a strong dedup key (birth date / phone / PINFL) is also present.
+                                        Lower = looser name match, surfacing more spelling/transliteration variants. Default 1.
+                                        Values below 1 are ignored and the default is used.
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="identifying_similar_patients_min_matches_with_key"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="identifying_similar_patients_min_matches_no_key"/>
+                                    <div class="text-muted">
+                                        Minimum name positions that must match when no strong dedup key is present.
+                                        Higher = stricter name match, fewer false positives — but a high value silently collapses to "all name parts must match", so a single typo can hide a real duplicate. Default 2.
+                                        Values below 1 are ignored and the default is used.
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="identifying_similar_patients_min_matches_no_key"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="identifying_similar_patients_match_by_phone"/>
+                                    <div class="text-muted">
+                                        If enabled, during patient registration a matching phone number (primary or secondary) also flags a potential duplicate, even when the name and birth date differ. Disabled by default. Patients who legitimately share a phone (e.g. family members) may be surfaced as duplicates.
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="identifying_similar_patients_match_by_phone"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="identifying_similar_patients_match_by_birth_date"/>
+                                    <div class="text-muted">
+                                        When enabled (default), a birth date entered during registration must match exactly for a patient to be flagged as a duplicate, and it also loosens the name match. Disable to surface same-name patients even when their birth dates differ or are missing — useful when DOB is often mistyped or unknown. Affects patient registration only.
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="identifying_similar_patients_match_by_birth_date"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="identifying_similar_patients_result_limit"/>
+                                    <div class="text-muted">
+                                        Max candidate duplicate patients shown for a NAME-ONLY search (top-N by similarity), and the point at which the search wizard shows a "narrow your search" note. Searches that include a birth date, PINFL, or phone number are never capped, so an exact-key match is never hidden. Default 100. Values below 1 are ignored.
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="identifying_similar_patients_result_limit"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="require_diagnosis_id">
+                        <h2>diagnosis</h2>
+                        <div class="row mt-16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="require_diagnosis"/>
+                                    <div class="text-muted">
+                                        Make diagnosis optional?
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="require_diagnosis"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="only_manager_can_delete_id">
+                        <h2>Only managers can delete services</h2>
+                        <div class="row mt-16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="only_manager_can_delete_amb"/>
+                                    <div class="text-muted">
+                                        Only managers can delete ambulatory services?
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="only_manager_can_delete_amb"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="send_error_to_telegram_group_id">
+                        <h2>Send error to telegram group</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="error_handle_bot_token"/>
+                                    <div class="content-group mt16">
+                                        <field name="error_handle_bot_token"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="error_handle_group_id"/>
+                                    <div class="content-group mt16">
+                                        <field name="error_handle_group_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="error_handle_group_topic_id"/>
+                                    <div class="content-group mt16">
+                                        <field name="error_handle_group_topic_id"/>
+                                    </div>
+                                    <button type="object" name="get_error_handle_group_data" class="btn btn-primary mt-2">
+                                        <span>Get error handle group data</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <button type="object" name="send_error_to_telegram_group" class="btn btn-primary mt-2">
+                                        <span>Send Test Message</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="his_emr">
+                        <h2>Ambulator settings</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="is_pause_button_show"/>
+                                    <field name="is_pause_button_show"/>
+                                </div>
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="include_unpaid_visits"/>
+                                    <field name="include_unpaid_visits"/>
+                                </div>
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="can_access_unpaid_visits"/>
+                                    <field name="can_access_unpaid_visits"/>
+                                </div>
+
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="show_products_in_doctor_done_services"/>
+                                    <field name="show_products_in_doctor_done_services"/>
+                                </div>
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="allow_old_visit_ordering"/>
+                                    <field name="allow_old_visit_ordering"/>
+                                </div>
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="duplicate_recom_check"/>
+                                    <field name="duplicate_recom_check"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="his_doctor_dashboard_settings">
+                        <h2>HIS doctor dashboard</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full" >
+                                    <label for="is_doctor_dashboard_revenue_show"/>
+                                    <field name="is_doctor_dashboard_revenue_show"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Share and Bonus Settings -->
+                    <div id="share_and_bonus_settings">
+                        <h2>Share and Bonus Settings</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="subtract_covered_discount_from_share_and_bonus"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="subtract_covered_discount_from_share_and_bonus"/>
+                                    <div class="text-muted">
+                                        Subtract covered discount from share and bonus calculations
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <field name="order_wizard_switcher_status"/>
+                                <div class="o_setting_right_pane">
+                                    <label for="order_wizard_switcher_status"/>
+                                    <div class="text-muted">
+                                        For handle order wizard switcher default status
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="subtract_covered_discount_for_actual_price"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="subtract_covered_discount_for_actual_price"/>
+                                    <div class="text-muted">
+                                        Subtract covered discount from share and bonus for actual price calculation
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="allow_doctor_fee_greater_than_service"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="allow_doctor_fee_greater_than_service"/>
+                                    <div class="text-muted">
+                                        Allow doctor fee price greater than service price
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane tw-w-full">
+                                    <label for="doctor_fee_price_date"/>
+                                    <div class="text-muted">
+                                        Select how to determine which price to use for doctor fees
+                                    </div>
+                                    <div class="content-group mt16">
+                                        <field name="doctor_fee_price_date" widget="radio"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane left_emr tw-w-full">
+                                    <label for="can_merge_multitab_pdf" />
+                                    <field name="can_merge_multitab_pdf" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="show_share_bonus_edit_button"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="show_share_bonus_edit_button"/>
+                                    <div class="text-muted">
+                                        Show Edit button to manually change share and bonus amounts
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="ir_model_fields_tree_patient_required" model="ir.ui.view">
+        <field name="name">ir.model.fields.tree.patient.required</field>
+        <field name="model">ir.model.fields</field>
+        <field name="arch" type="xml">
+            <tree string="Patient fields"
+                  create="false"
+                  edit="false"
+                  delete="false">
+                <!-- faqat field_description ko'rsatamiz -->
+                <field name="field_description" string="Field"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_config_settings_view_form_inherit_base_setup" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.base.setup</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Misol: Settings sahifasiga yangi block qo‘shish -->
+            <xpath expr="//div[@id='active_user_setting']//div[hasclass('o_setting_right_pane')]" position="after">
+                <div class="app_settings_block mt16">
+                    <div class="o_setting_right_pane">
+                        <label for="title" class="col-sm-1 col-form-label"/>
+                        <field name="title"/>
+                    </div>
+                </div>
+
+            </xpath>
+
+            <!-- Append HIS application version to the bottom of the About section. -->
+            <xpath expr="//div[@name='about_setting_container']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_right_pane">
+                        <label for="app_version" string="Aurora version"/>
+                        <div class="content-group mt16">
+                            <field name="app_version" readonly="1"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

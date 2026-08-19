@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View his.referral_source_by_service View Tree -->
+    <record id="view_his_referral_source_by_service_tree" model="ir.ui.view">
+        <field name="name">view.his.referral_source_by_service.tree</field>
+        <field name="model">his.referral_source_by_service</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="service_id"/>
+                <field name="referral_bonus_type"/>
+                <field name="internal_formula" optional="hide"/>
+                <field name="external_formula" optional="hide"/>
+                <field name="internal_amount"/>
+                <field name="external_amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View his.referral_source_by_service form -->
+    <record id="view_his_referral_source_by_service_form" model="ir.ui.view">
+        <field name="name">view.his.referral_source_by_service.form</field>
+        <field name="model">his.referral_source_by_service</field>
+        <field name="arch" type="xml">
+            <form string="His Referral_source_by_service">
+                <sheet>
+                    <group col="12" colspan="12">
+                        <group col="12" colspan="12">
+                            <field name="service_id"/>
+                            <field name="referral_bonus_type"/>
+                            <field name="referral_bonus_value" attrs="{'invisible': [('referral_bonus_type', '=', 'formula')]}"/>
+                            <field name="calculation_type" attrs="{'invisible': [('referral_bonus_type', '!=', 'percent')]}"/>
+                        </group>
+                        <group col="12" colspan="6" attrs="{'invisible': [('referral_bonus_type', '!=', 'formula')]}">
+                            <field name="internal_formula"
+                                placeholder="e.g., price_subtotal * 0.12"
+                                widget="text"/>
+                        </group>
+                        <group col="12" colspan="6" attrs="{'invisible': [('referral_bonus_type', '!=', 'formula')]}">
+                            <field name="external_formula"
+                                placeholder="e.g., price_subtotal * 0.10"
+                                widget="text"/>
+                        </group>
+                        <group col="12" colspan="12"
+                            attrs="{'invisible': [('referral_bonus_type', '!=', 'formula')]}">
+                            <div class="text-muted">
+                                <strong>Available Variables:</strong><br/>
+                                • <strong>price_subtotal</strong>: Subtotal (price after discount, before tax)<br/>
+                                • <strong>discount_total</strong>: Total discount amount<br/>
+                                • <strong>price_total</strong>: Total price (including tax)<br/>
+                                • <strong>quantity</strong>: Product quantity<br/>
+                                • <strong>price_tax</strong>: Tax amount<br/>
+                                • <strong>price</strong>: Unit price<br/>
+                                • <strong>actual_price</strong>: Actual unit price<br/>
+                                <br/>
+                                <strong>Examples:</strong><br/>
+                                • Simple percentage: <code>price_subtotal * 0.12</code><br/>
+                                • After discount: <code>(price_total - discount_total) * 0.15</code><br/>
+                                • Conditional: <code>price_subtotal * 0.15 if quantity > 5 else price_subtotal * 0.08</code><br/>
+                                • Complex: <code>(actual_price * quantity - discount_total) * 0.10</code>
+                            </div>
+                        </group>
+                        <group col="12" colspan="6" attrs="{'invisible': [('referral_bonus_type', '=', 'formula')]}">
+                            <field name="internal_amount"/>
+                        </group>
+                        <group col="12" colspan="6" attrs="{'invisible': [('referral_bonus_type', '=', 'formula')]}">
+                            <field name="external_amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View his.referral_source_by_service search -->
+    <record id="view_his_referral_source_by_service_search" model="ir.ui.view">
+        <field name="name">view.his.referral_source_by_service.search</field>
+        <field name="model">his.referral_source_by_service</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="service_id"/>
+                <field name="referral_bonus_type"/>
+                <field name="referral_bonus_value"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action his.referral_source_by_service -->
+    <record id="action_his_referral_source_by_service" model="ir.actions.act_window">
+        <field name="name">His Referral source by service</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.referral_source_by_service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_id', '=', False)]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new His Referral_source_by_service.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu his.referral_source_by_service -->
+    <menuitem id="menu_his_referral_source_by_service"
+                name="Referral Source by Service"
+                parent="referral_menu"
+                groups="his.group_his_admin,his.group_his_manager"
+                action="action_his_referral_source_by_service"/>
+
+</odoo>

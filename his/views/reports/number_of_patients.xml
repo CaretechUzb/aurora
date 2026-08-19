@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_proxy_number_of_patients_report_tree" model="ir.ui.view">
+        <field name="name">his.proxy_number_of_patients_report.tree</field>
+        <field name="model">his.number_of_patients_report</field>
+        <field name="arch" type="xml">
+            <tree js_class="list_handle_change" create="0">
+                <field name="month"/>
+                <field name="department"/>
+                <field name="patient_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_number_of_patients_report" model="ir.actions.act_window">
+        <field name="name">Number of Patient</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.number_of_patients_report</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_proxy_number_of_patients_report_tree')})]"/>
+        <field name="context">
+            {
+                'search_default_filter_child': 1,
+                'use_custom_search': '1',
+                'open_filters_callback': 'custom_search_filter',
+                'reset_filters_callback': 'custom_search_reset',
+                'filter_is_active': False
+            }
+         </field>
+
+    </record>
+
+
+    <menuitem id="menu_number_of_patients_report"
+              name="Number of Patient"
+              parent="his.menu_report_management_main"
+              action="action_number_of_patients_report"
+              sequence="3"/>
+
+</odoo>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View his.payer_policy_limit View Tree -->
+    <record id="view_his_payer_policy_limit_tree" model="ir.ui.view">
+        <field name="name">view.his.payer_policy_limit.tree</field>
+        <field name="model">his.payer_policy_limit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="company_id" />
+                <field name="amount"/>
+                <field name="policy_id"/>
+                <button icon="fa-arrow-right" title="fa-arrow-right" name="action_open_in_current" type="object" class="oe_highlight"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View his.payer_policy_limit form -->
+    <record id="view_his_payer_policy_limit_form" model="ir.ui.view">
+        <field name="name">view.his.payer_policy_limit.form</field>
+        <field name="model">his.payer_policy_limit</field>
+        <field name="arch" type="xml">
+            <form string="His Payer_policy_limit">
+                <sheet>
+                    <group>
+                        <field name="amount" placeholder="Amount..."/>
+                        <field name="date" class='readonly-input'/>
+                    </group>
+                    <group>
+                        <div class="oe_chatter" style="display:block !important;">
+                            <field name="message_follower_ids"/>
+                            <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                        </div>
+                    </group>
+                    <group>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids"/>
+                            <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                        </div>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_his_payer_policy_limit_search" model="ir.ui.view">
+        <field name="name">view.his.payer_policy_limit.search</field>
+        <field name="model">his.payer_policy_limit</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="date"></field>
+                <field name="policy_id"></field>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_his_payer_policy_limit" model="ir.actions.act_window">
+        <field name="name">His Payer_policy_limit</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.payer_policy_limit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new His Payer_policy_limit.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_payer_policy_limit"
+              name="Payer policy limit"
+              parent="his.menu_payer_configurations"
+              action="action_his_payer_policy_limit"
+              sequence="3"/>
+
+</odoo>

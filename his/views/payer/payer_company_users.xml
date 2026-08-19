@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2026 CareTech
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/LGPL).
+
+    Adds the "Users" tab to his.payer_company form.
+
+    The tab shows payer.user_ids (portal users attached to this payer)
+    and a button to create a new portal user via his.create_payer_user_wizard.
+    The field and wizard are generic — they work for any payer, not only
+    aggregators.
+-->
+<odoo>
+
+    <record id="view_payer_company_form_users" model="ir.ui.view">
+        <field name="name">his.payer_company.form.users</field>
+        <field name="model">his.payer_company</field>
+        <field name="inherit_id" ref="his.view_payer_company_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+
+                <!-- Tab: payer.user_ids — always visible. M2M lives on
+                     the payer regardless of any aggregator flag so
+                     admins can pre-assemble the user list before
+                     enabling API access. -->
+                <page name="payer_users"
+                      string="Users">
+                    <div class="d-flex justify-content-end mb-2">
+                        <button name="%(his.action_create_payer_user_wizard)d"
+                                type="action"
+                                string="Create user"
+                                class="btn-primary"
+                                context="{'default_payer_id': active_id}"
+                                attrs="{'invisible': [('id', '=', False)]}"
+                                help="Create a new portal user attached to this payer. Set a password and assign a role (or rotate the API key) from the user form afterwards."/>
+                    </div>
+                    <field name="user_ids" nolabel="1">
+                        <tree create="0" delete="0">
+                            <field name="name"/>
+                            <field name="login"/>
+                            <field name="company_id" string="Branch"/>
+                            <button name="action_open_in_current"
+                                    type="object"
+                                    icon="fa-arrow-right"
+                                    title="Open user"
+                                    class="btn-link"/>
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

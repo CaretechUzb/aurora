@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_unit_pack_type_form" model="ir.ui.view">
+        <field name="name">his.unit_pack_type.form</field>
+        <field name="model">his.unit_pack_type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_unit_pack_type_tree" model="ir.ui.view">
+        <field name="name">his.unit_pack_type.tree</field>
+        <field name="model">his.unit_pack_type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_unit_pack_type_search" model="ir.ui.view">
+        <field name="name">his.unit_pack_type.search</field>
+        <field name="model">his.unit_pack_type</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_unit_pack_type" model="ir.actions.act_window">
+        <field name="name">Unit Pack Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.unit_pack_type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_unit_pack_type_search"/>
+    </record>
+
+<!--    <menuitem id="menu_unit_pack_types"-->
+<!--              name="Unit Pack Types"-->
+<!--              parent="his.menu_uom"-->
+<!--              action="action_unit_pack_type"-->
+<!--              sequence="13"/>-->
+</odoo>

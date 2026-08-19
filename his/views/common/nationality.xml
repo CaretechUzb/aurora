@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_nationality_form" model="ir.ui.view">
+        <field name="name">his.nationality.form</field>
+        <field name="model">his.nationality</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nationality_tree" model="ir.ui.view">
+        <field name="name">his.nationality.tree</field>
+        <field name="model">his.nationality</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_nationality_search" model="ir.ui.view">
+        <field name="name">his.nationality.search</field>
+        <field name="model">his.nationality</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_nationality" model="ir.actions.act_window">
+        <field name="name">Nationality</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.nationality</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_nationality_search"/>
+    </record>
+
+    <menuitem id="menu_nationality"
+              name="Nationality"
+              parent="his.menu_addresses_database"
+              action="action_nationality"
+              sequence="3"/>
+</odoo>

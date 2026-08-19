@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_drug_tab" model="ir.ui.view">
+        <field name="name">product.template.form.view.inherit.drug_tab</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sale.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='invoicing']" position="after">
+                <page name="addition_input_product_type" string="Drugs">
+                    <group colspan="12" col="12">
+                        <field name="product_type_selection" invisible="1"/>
+                        <group colspan="6">
+                            <field name="calculation_type"/>
+                        </group>
+                        <group colspan="6">
+                            <field name="amt_unit" string="AMT Unit"
+                                   attrs="{'invisible':[('calculation_type','not in',['pack', 'one_time'])]}"/>
+                        </group>
+                        <group colspan="6">
+                            <field name="quantity_in_pack" string="Quantity in pack"
+                                   attrs="{'invisible':[('calculation_type','not in',['pack', 'one_time'])]}"/>
+                        </group>
+                        <group colspan="6">
+                            <field name="medical_classification_id"
+                                   options="{'no_open':True,'no_create':True}"
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+                        <group colspan="6" invisible="1">
+                            <field name="basic_dosage"
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+                        <group colspan="6" invisible="1">
+                            <field name="default_no"
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+                        <group colspan="6" invisible="1">
+                            <field name="daily_max_amt"
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+                        <group colspan="6" invisible="1">
+                            <field name="content"
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+
+                        <group colspan="6" invisible="1">
+                            <field name="quantity_text" string=""
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+                        <group colspan="6" invisible="1">
+                            <field name="calc_ext_use_drug"
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+                        <group colspan="6" invisible="1">
+                            <field name="instruction"
+                                   attrs="{'readonly':[('product_type_selection','!=','drug')]}"/>
+                        </group>
+                    </group>
+                </page>
+                <page name="his" string="HIS">
+                    <group colspan="12" col="12">
+                        <group colspan="3">
+                            <field name="product_type"
+                                   options="{'no_create':True, 'no_open':True}"/>
+                        </group>
+                        <group colspan="9" col="12">
+                            <field
+                                    name="categ_id"
+                                    domain="[('is_his', '=', True)]"
+                                    context="{
+                                            'default_is_his': True
+                                        }"
+                            />
+                        </group>
+                        <group colspan="4">
+                            <field name="gtin_id"/>
+                        </group>
+                        <group colspan="4">
+                            <field name="product_tag_ids" widget="many2many_tags"
+                                   options="{'color_field': 'color'}"/>
+                        </group>
+                        <group colspan="4">
+                            <field name="product_nnm_ids" widget="many2many_tags"
+                                   options="{'color_field': 'color'}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_gtin_products_form" model="ir.ui.view">
+        <field name="name">his.gtin_products.form</field>
+        <field name="model">his.gtin_products</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="package_code"/>
+                        <field name="class_code"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_gtin_products_tree" model="ir.ui.view">
+        <field name="name">his.gtin_products.tree</field>
+        <field name="model">his.gtin_products</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="package_code"/>
+                <field name="class_code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_gtin_products_search" model="ir.ui.view">
+        <field name="name">his.gtin_products.search</field>
+        <field name="model">his.gtin_products</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="package_code"/>
+                <field name="class_code"/>
+           </search>
+        </field>
+    </record>
+
+
+    <record id="action_gtin_products" model="ir.actions.act_window">
+        <field name="name">GTIN Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.gtin_products</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_gtin_products_search"/>
+    </record>
+
+    <menuitem
+        id="gtin_products_menu"
+        name="GTIN Products"
+        sequence="3"
+        parent="menu_product_management_main"
+        groups="his.group_his_admin,his.group_his_provisory,his.group_his_manager"
+        action="action_gtin_products"/>
+</odoo>

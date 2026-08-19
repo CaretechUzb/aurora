@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_payer_contract_form" model="ir.ui.view">
+        <field name="name">his.payer_contract.form</field>
+        <field name="model">his.payer_contract</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="payer_company_id" invisible="1"/>
+                    <field name="name"/>
+                    <field name="date" options="{ 'datepicker': {'format':'dd/MM/yyyy','minDate':'01-01-1900' } }"/>
+                    <field name="template_id"/>
+                    <notebook>
+                        <page string="Policies">
+                            <field name="policy_ids">
+                                <tree create="1">
+                                    <field name="full_name"/>
+                                    <field name="pinfl"/>
+                                    <field name="patient_id"/>
+                                    <field name="policy_number"/>
+                                    <field name="policy_amount"/>
+                                    <field name="from_date"/>
+                                    <field name="to_date"/>
+                                    <field name="is_active"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_payer_contract_tree" model="ir.ui.view">
+        <field name="name">his.payer_contract.tree</field>
+        <field name="model">his.payer_contract</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="policy_ids"/>
+                <field name="payer_company_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_payer_contract_search" model="ir.ui.view">
+        <field name="name">his.payer_contract.search</field>
+        <field name="model">his.payer_contract</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="policy_ids"/>
+                            </search>
+        </field>
+    </record>
+    <record id="action_payer_contract" model="ir.actions.act_window">
+        <field name="name">Payer Contract</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.payer_contract</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}
+        </field>
+        <field name="search_view_id" ref="his.view_payer_contract_search"/>
+    </record>
+
+    <!--    <menuitem id="menu_payer_contract"-->
+    <!--              name="Payer Contract"-->
+    <!--              parent="his.menu_payer_configurations"-->
+    <!--              action="action_payer_contract"-->
+    <!--              sequence="12"/>-->
+</odoo>

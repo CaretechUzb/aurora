@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_product_nnm_form" model="ir.ui.view">
+        <field name="name">product.nnm.form</field>
+        <field name="model">product.nnm</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="color" widget="color_picker"/>
+                        <field name="snomed_id" />
+                    </group>
+                    <group string="Related Products">
+                        <!-- <field name="product_template_ids" widget="many2many_tags"/> -->
+                        <field name="product_product_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                        </field>
+                        <!-- <field name="product_ids" widget="many2many_tags" readonly="1"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_nnm_tree" model="ir.ui.view">
+        <field name="name">product.nnm.tree</field>
+        <field name="model">product.nnm</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_nnm_search" model="ir.ui.view">
+        <field name="name">product.nnm.search</field>
+        <field name="model">product.nnm</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_nnm" model="ir.actions.act_window">
+        <field name="name">Product NNM</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.nnm</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="his.view_product_nnm_search"/>
+    </record>
+
+    <menuitem id="menu_product_nnm"
+              name="Product NNM"
+              parent="his.menu_product_management_main"
+              action="action_product_nnm"
+              groups="his.group_his_admin,his.group_his_provisory,his.group_his_manager"
+              sequence="10"/>
+</odoo>

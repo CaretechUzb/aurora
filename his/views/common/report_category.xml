@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_report_category_form" model="ir.ui.view">
+        <field name="name">his.report_category.form</field>
+        <field name="model">his.report_category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_report_category_tree" model="ir.ui.view">
+        <field name="name">his.report_category.tree</field>
+        <field name="model">his.report_category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_report_category_search" model="ir.ui.view">
+        <field name="name">his.report_category.search</field>
+        <field name="model">his.report_category</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_report_category" model="ir.actions.act_window">
+        <field name="name">Report Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.report_category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_report_category_search"/>
+    </record>
+
+    <menuitem id="menu_report_category"
+              name="Report Category"
+              parent="his.menu_report_management_main"
+              action="action_report_category"
+              sequence="2"/>
+</odoo>

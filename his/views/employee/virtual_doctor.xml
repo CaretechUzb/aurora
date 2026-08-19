@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_hr_employee_form_virtual_doctor" model="ir.ui.view">
+        <field name="name">hr.employee.form.virtual.doctor</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <form string="Virtual Doctor">
+                <group class="items-wrapper" colspan="12" col="12">
+                    <group col="12" colspan="12">
+                        <field name="name"/>
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="department_id" invisible="1"/>
+                    </group>
+                    <group colspan="12" col="12">
+                        <group col="12" colspan="12">
+                            <field name="specialization_ids" 
+                                widget="many2many_tags" 
+                                context="{
+                                    'default_is_his': True
+                                }"/>
+                        </group>
+                        <group col="12" colspan="12">
+                            <field name="doctor_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="work_phone"/>
+                                    <field name="job_id"/>
+                                    <field name="company_id" invisible='1'/>
+                                </tree>
+                            </field>
+                            <field name="job_id"/>   
+                            <field name="can_online_appointment"/>   
+                            <field name="can_create_share_bonus"/>   
+                        </group>
+                        <group colspan="12" col="12">
+                            <field name="info_description" widget="ck-editor"/>
+                        </group>
+                        <field name="company_id" invisible="1"/>
+                        <field name="is_virtual" invisible="1"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_employee_tree_virtual_doctor" model="ir.ui.view">
+        <field name="name">hr.employee.form.virtual.doctor</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <tree string="Virtual Doctor">
+                <field name="name"/>
+                <field name="work_phone"/>
+                <field name="job_id" options="{'no_create': True, 'no_open': True}"/>
+                <field name="is_virtual" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hr_employee_virtual_doctor" model="ir.actions.act_window">
+        <field name="name">Virtual Doctor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_hr_employee_tree_virtual_doctor')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_hr_employee_form_virtual_doctor')})]"/>
+        <field name="context">{'default_is_virtual': True}</field>
+        <!--        <field name="search_view_id" ref="his.view_proxy_amb_list_search"/>-->
+        <field name="domain">[('is_virtual', '=', True)]</field>
+    </record>
+
+    <menuitem id="menu_virtual_doctor"
+              name="Virtual Doctor"
+              parent="his.menu_user_management_main"
+              action="action_hr_employee_virtual_doctor"
+              sequence="6"/>
+
+    <menuitem id="departments_management_menu"
+              name="Departments"
+              parent="his.menu_user_management_main"
+              action="hr.hr_department_kanban_action"
+              sequence="7"/>
+
+</odoo>

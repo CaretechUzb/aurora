@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_message_log_form" model="ir.ui.view">
+        <field name="name">his.message_log.form</field>
+        <field name="model">his.message_log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="phone_number"/>
+                        <field name="message"/>
+                        <field name="is_send"/>
+                        <field name="ip"/>
+                        <field name="res_data"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_message_log_tree" model="ir.ui.view">
+        <field name="name">his.message_log.tree</field>
+        <field name="model">his.message_log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="phone_number"/>
+                <field name="message"/>
+                <field name="is_send"/>
+                <field name="ip"/>
+                <field name="res_data"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_message_log_search" model="ir.ui.view">
+        <field name="name">his.message_log.search</field>
+        <field name="model">his.message_log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="phone_number"/>
+                <field name="message"/>
+                <field name="is_send"/>
+                <field name="ip"/>
+                <field name="res_data"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_message_log" model="ir.actions.act_window">
+        <field name="name">Message Log</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.message_log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1}</field>
+        <field name="search_view_id" ref="his.view_message_log_search"/>
+    </record>
+
+<!--    <menuitem id="menu_message_log"-->
+<!--              name="Message Log"-->
+<!--              parent="his.message_menu_main"-->
+<!--              action="action_message_log"-->
+<!--              sequence="7"/>-->
+</odoo>

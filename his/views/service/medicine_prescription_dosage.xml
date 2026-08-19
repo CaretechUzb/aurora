@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="medicine_prescription_dosage_view_form" model="ir.ui.view">
+        <field name="name">medicine_prescription_dosage.view.form</field>
+        <field name="model">his.medicine_prescription_dosage</field>
+        <field name="arch" type="xml">
+            <form string="Medicine">
+                <sheet>
+                    <group>
+                        <field name="medicine_prescription_id" invisible="1" />
+                        <field name="medicine_id" />
+                        <field name="drug_dosage_id"
+                               domain="[('product_id', '=', medicine_id)]"
+                               options='{"no_open": True, "no_create": True}'/>
+                        <field name="allow_dosage_selection" invisible="1" />
+                        <field name="dosage" attrs="{'invisible': [('allow_dosage_selection', '=', True)]}" />
+                        <field name="dosage_unit_id" options='{"no_open": True}'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

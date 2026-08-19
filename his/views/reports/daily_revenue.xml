@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_proxy_daily_revenue_tree" model="ir.ui.view">
+        <field name="name">his.proxy_daily_revenue_report.tree</field>
+        <field name="model">his.daily_revenue_report</field>
+        <field name="arch" type="xml">
+            <tree js_class="list_handle_change" create="0">
+                <field name="date"/>
+                <field name="card_amount"/>
+                <field name="cash_amount"/>
+                <field name="total_amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="daily_revenue_report_pivot_view" model="ir.ui.view">
+        <field name="name">his.daily_revenue_report.pivot.view</field>
+        <field name="model">his.daily_revenue_report</field>
+        <field name="arch" type="xml">
+            <pivot string="Daily Revenue">
+                <field name="date" type="col" interval="day"/>
+                <field name="card_amount" type="measure"/>
+                <field name="cash_amount" type="measure"/>
+                <field name="total_amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_daily_revenue" model="ir.actions.act_window">
+        <field name="name">Daily Revenue</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.daily_revenue_report</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_proxy_daily_revenue_tree')})]"/>
+        <field name="context">
+                {
+                    'search_default_filter_child': 1,
+                    'use_custom_search': '1',
+                    'open_filters_callback': 'custom_search_filter',
+                    'reset_filters_callback': 'custom_search_reset',
+                    'filter_is_active': False
+                }
+         </field>
+    </record>
+
+
+    <menuitem id="menu_daily_revenue_report"
+              name="Daily Revenue Report"
+              parent="his.menu_report_management_main"
+              action="action_daily_revenue"
+              sequence="1"/>
+
+</odoo>

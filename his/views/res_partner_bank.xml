@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_res_partner_bank"
+                  name="Bank"
+                  parent="his.menu_other_configurations"
+                  action="base.action_res_bank_form"
+                  sequence="4"/>
+    </data>
+</odoo>

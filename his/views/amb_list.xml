@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_proxy_amb_list_form" model="ir.ui.view">
+        <field name="name">his.proxy_patient_visit.form</field>
+        <field name="model">his.patient_visit</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <group col="12" class="w-100 patient-modal">
+                    <div class="items-wrapper !tw-p-0 !tw-m-0">
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_order_details_wizard" type="object"
+                                    icon="fa-bars" title="fa-bars"
+                                    context="{'active_id': active_id,'clicked_site':'amb'}">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="order_detail_count"/>
+                                    </span>
+                                    <span class="o_stat_text">
+                                        Orders
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
+                        <field name="is_done" invisible="1"/>
+                        <field name="doctor_id" invisible="1"/>
+                        <group colspan="3" col="12" class="!tw-p-[15px]">
+                            <group colspan="12" col="12">
+                                <group colspan="12" col="12">
+                                    <group colspan="6">
+                                        <field name="patient_type" string="Type Patient: " widget="radio"/>
+                                    </group>
+                                    <group colspan="6">
+                                        <field name="type_visit" string="HR blood group: " widget="radio"/>
+                                    </group>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="company_id" string="Company id: " invisible="True"/>
+                                </group>
+
+                                <group colspan="12" col="12">
+                                    <field name="type_receipt" string="Type Receipt: "/>
+                                </group>
+                                <!--                                <group colspan="12" col="12">-->
+                                <!--                                    <field name="patient_id" string="Patient : "/>-->
+                                <!--                                </group>-->
+                                <group colspan="12" col="12">
+                                    <field name="date" string="Date: " placeholder="18/01/2024"/>
+                                </group>
+                                <group name="dep_doctor_group" colspan="12" col="12">
+                                    <group colspan="6">
+                                        <field name="product_type" placeholder="Choose Base Category"
+                                               string="Choose Base Category: "/>
+                                    </group>
+                                    <group colspan="6">
+                                        <!-- <field name="doctor_schedule_id" placeholde="Schedule"
+                                               string="Doctor Schedule: "/> -->
+                                        <field name="doctor_id" invisible="1"/>
+                                    </group>
+                                </group>
+                                <!--                                <group colspan="12" col="12">-->
+                                <!--                                    <field name="foreigner" string="Страхование: "/>-->
+                                <!--                                </group>-->
+                                <group colspan="12" col="12">
+                                    <field name="referral_source_id" string="Referral Source: " options="{'no_create':1,'no_open': True}"
+                                           placeholde="Choice Referral Source"/>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="is_consultation_free"/>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <!--                                    <div class="flex justify-end gap-16">-->
+                                    <!--                                        <button class="btn btn-success" type="object" name="action_registration" string="Registration" context="{'active_id': active_id}"/>-->
+                                    <!--                                        <button type="object" name="action_clear_visit" class="btn btn-danger oe_highlight" string="Clear"/>-->
+                                    <!--                                    </div>-->
+                                </group>
+                            </group>
+                        </group>
+                        <field name="is_done" invisible="1"/>
+                        <field name="doctor_id" invisible="1"/>
+                        <group colspan="3" col="12">
+                            <group colspan="12" col="12">
+                                <group colspan="12" col="12">
+                                    <group colspan="6">
+                                        <field name="patient_type" string="Type Patient: " widget="radio"/>
+                                    </group>
+                                    <group colspan="6">
+                                        <field name="type_visit" string="HR blood group: " widget="radio"/>
+                                    </group>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="type_receipt" string="Type Receipt: "/>
+                                </group>
+                                <!--                                <group colspan="12" col="12">-->
+                                <!--                                    <field name="patient_id" string="Patient : "/>-->
+                                <!--                                </group>-->
+                                <group colspan="12" col="12">
+                                    <field name="date" string="Date: " placeholder="18/01/2024"/>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <group colspan="6">
+                                        <field name="product_type" placeholder="Choose Base Category" string="Отдел: "/>
+                                    </group>
+                                    <group colspan="6">
+                                        <!-- <field name="doctor_schedule_id" placeholde="Schedule"
+                                               string="Doctor Schedule: "/> -->
+                                        <field name="doctor_id" invisible="1"/>
+                                    </group>
+                                </group>
+                                <!--                                <group colspan="12" col="12">-->
+                                <!--                                    <field name="foreigner" string="Страхование: "/>-->
+                                <!--                                </group>-->
+                                <group colspan="12" col="12">
+                                    <field name="referral_source_id" string="Referral Source: " options="{'no_create':1,'no_open': True}"
+                                           placeholde="Choice Referral Source"/>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="patient_status" string="Status: "/>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="is_consultation_free"/>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <!--                                    <div class="flex justify-end gap-16">-->
+                                    <!--                                        <button class="btn btn-success" type="object" name="action_registration" string="Registration" context="{'active_id': active_id}"/>-->
+                                    <!--                                        <button type="object" name="action_clear_visit" class="btn btn-danger oe_highlight" string="Clear"/>-->
+                                    <!--                                    </div>-->
+                                </group>
+                            </group>
+                        </group>
+                    </div>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_proxy_amb_list_tree" model="ir.ui.view">
+        <field name="name">his.proxy_patient_visit.tree</field>
+        <field name="model">his.patient_visit</field>
+        <field name="arch" type="xml">
+            <tree js_class="custom-search-panel"
+                  decoration-primary="patient_status == 'registered'"
+                  decoration-warning="patient_status == 'reserved'"
+                  decoration-success="patient_status == 'consulted' or is_done == True"
+                  decoration-it="patient_status == 'diagnosed'"
+                  decoration-info="patient_status == 'treated'"
+                  decoration-muted="patient_status == 'discharged'"
+                  decoration-danger="patient_status == 'cancelled'"
+                  decoration-bf="patient_status == 'deleted'"
+                  create="0" delete="0"
+                  default_order="start_date_time">
+                <field name="is_done" invisible="1"/>
+                <field name="doctor_id" invisible="1"/>
+
+                <field name="patient_id"/>
+                <field name="full_age" optional="hide"/>
+                <field name="is_emergency"/>
+                <field name="type_visit"/>
+                <field name="main_service_id"/>
+                <field name="product_type"/>
+                <field name="patient_status"/>
+                <!-- <field name="doctor_schedule_id"/> -->
+                <field name="date" optional="show" />
+                <field name="start_date_time" optional="show"/>
+                <field name="display_schedule_time" optional="show"/>
+                <field name="payment_state"/>
+                <field name="coverer_type" />
+                <field name="create_date" optional="hide"/>
+                <field name="create_uid" optional="show"/>
+                <field name="done_date" optional="show" />
+                <!--                <field name="department_id" optional="hide"/>-->
+                <!--                <field name="doctor_fee" optional="hide"/>-->
+                <!--                <field name="insurance_type" optional="hide"/>-->
+                <field name="patient_type" optional="hide"/>
+                <field name="phone_number" optional="hide"/>
+                <field name="referral_source_id" optional="hide"/>
+                <field name="visit_status" optional="hide"/>
+                <field name="visiting_type" optional="hide"/>
+
+                <field name="is_done" invisible="1"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_proxy_amb_list_search" model="ir.ui.view">
+        <field name="name">his.proxy_patient_visit.search</field>
+        <field name="model">his.patient_visit</field>
+        <field name="arch" type="xml">
+            <search>
+                <!--                <field name="patient_id"/>-->
+                <field name="is_emergency"/>
+                <field name="type_visit"/>
+                <field name="date"/>
+                <!--                <field name="product_type"/>-->
+                <!-- <field name="doctor_schedule_id"/> -->
+                <field name="is_done"/>
+                <filter string="Waiting" name="patient_status" domain="[('patient_status','=','registered')]"/>
+                <filter string="Diagnosed" name="patient_status" domain="[('patient_status','=','diagnosed')]"/>
+                <filter string="Cancelled" name="patient_status" domain="[('patient_status','=','cancelled')]"/>
+                <filter string="Before noon" name="is_am" domain="[('is_am','=',True)]"/>
+                <filter string="After noon" name="is_am" domain="[('is_am','!=',True)]"/>
+                <filter string="Done" name="is_done" domain="[('is_done','=',True)]"/>
+                <filter string="UnDone" name="is_done" domain="[('is_done','!=',True)]"/>
+                <searchpanel>
+                    <!--                    <field name="product_type"/>-->
+                    <field name="patient_status"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+    <record id="patient_ambulator_calendar_view_form" model="ir.ui.view">
+        <field name="name">patient_ambulator_calendar.view.form</field>
+        <field name="model">his.patient_visit</field>
+        <field name="arch" type="xml">
+            <form string="Patient registration" run_on_load="run_on_load">
+                <group invisible="1">
+                    <field name="type_receipt"/>
+                    <field name="patient_status"/>
+                    <field name="company_id_domain"/>
+                </group>
+                <group col="12" colspan="12" class="items-wrapper">
+                    <field name="patient_id" string="Patient" options="{'create_edit': true}"
+                        context="{'check_for_duplicate': True}"/>
+                        <field name="phone_number"/>
+
+                        <!-- widget="many2one_tooltip"
+                        options="{'search_more_action': 'search_more_action'}"/> -->
+                </group>
+                <group colspan="12" col="12" class="items-wrapper tw-relative">
+                    <group colspan="12">
+                        <field name="doctor_ids" invisible="1"/>
+                        <field name="doctor_id"
+                                domain="[('id', 'in', doctor_ids)]"
+                                options="{
+                                    'no_open': True,
+                                    'no_create': 1
+                                }"
+                                class="readonly-input"
+                                string="Doctor"/>
+                    </group>
+                    <group colspan="12" col="12">
+                        <group colspan="8" col="12">
+                        <field name="doctor_services" invisible="1"/>
+                        <field name="main_service_id"
+                               string="Service"
+                               modifiers="{&quot;required&quot;: true}"
+                               options="{
+                                        'no_open': True,
+                                        'no_create': 1
+                                    }"
+                               domain="[('id','in',doctor_services)]"
+                        />
+
+                        </group>
+                        <group colspan="4" col="12">
+                            <field name="product_type" string="Type Category"
+                                   class="readonly-input"
+                                   modifiers="{&quot;required&quot;: true}"
+                                   options="{
+                                        'no_open': True,
+                                        'no_create': 1
+                                            }"/>
+                        </group>
+                    </group>
+                    <group colspan="12">
+                        <field name="company_id" string="Company" domain="company_id_domain"/>
+                    </group>
+                    <group colspan="6">
+                        <field name="date"
+                               modifiers="{&quot;required&quot;: true}"
+                        />
+                    </group>
+                    <group colspan="6">
+                        <field name="type_visit" string="Visit Type"/>
+                    </group>
+                    <group colspan="12" col="12">
+                        <group colspan="4" col="12">
+                            <field name="start_time" string="Start Time"
+                                   modifiers="{&quot;required&quot;: true}"
+                                   widget="float-formate-time"/>
+                        </group>
+                        <group colspan="4" col="12">
+                            <field name="end_time" string="End Time"
+                                   modifiers="{&quot;required&quot;: true}"
+                                   widget="float-formate-time"/>
+                        </group>
+                        <group colspan="4" col="12">
+                            <field name="patient_status" string="Order Status"/>
+                        </group>
+                    </group>
+                    <group colspan="12" col="12">
+                        <field name="cancel_cause_id" string="Cancel Cause"
+                            attrs="{'invisible': [('patient_status', '!=', 'cancelled')], 'required': [('patient_status', '=', 'cancelled')]}"/>
+                        <field name="cancel_cause" string="Cause comment"
+                            attrs="{'invisible': [('patient_status', '!=', 'cancelled')]}"/>
+                    </group>
+                    <group string="Referral Source &amp; Payers selections" colspan="12" col="12">
+                        <field name="referral_source_is_required" invisible="1"/>
+                        <group colspan="12" col="12" name="referral_source_id">
+                            <group colspan="6" col="12">
+                                <field name="referral_source_category_id" string="R.Source Category"
+                                       placeholde="Choice Referral Source Category" required="1"
+                                       options="{'no_create':1,'no_open': True}"/>
+                            </group>
+                            <group colspan="6" col="12">
+                                <field name="referal_source_domain" invisible="1"/>
+                                <field name="referral_source_id" string="Referral Source: "
+                                       placeholde="Choice Referral Source" required="1"
+                                       domain="referal_source_domain"
+                                       options="{'no_create':1,'no_open': True}"/>
+                            </group>
+                        </group>
+                        <!--                        <group colspan="12" col="12" name="referral_source_id"-->
+                        <!--                               attrs="{-->
+                        <!--                                'invisible': [('referral_source_is_required', '=', False)]-->
+                        <!--                            }">-->
+                        <!--                            <group colspan="6" col="12">-->
+                        <!--                                <field name="referral_source_category_id" string="R.Source Category"-->
+                        <!--                                       placeholde="Choice Referral Source Category"-->
+                        <!--                                       modifiers="{&quot;required&quot;: true}"-->
+                        <!--                                       options="{'no_create':1,'no_open': True}"/>-->
+                        <!--                            </group>-->
+                        <!--                            <group colspan="6" col="12">-->
+                        <!--                                <field name="referral_source_id" string="Referral Source: "-->
+                        <!--                                       placeholde="Choice Referral Source"-->
+                        <!--                                       domain="[('category_id','=',referral_source_category_id)]"-->
+                        <!--                                       modifiers="{&quot;required&quot;: true}"-->
+                        <!--                                       options="{'no_create':1,'no_open': True}"/>-->
+                        <!--                            </group>-->
+                        <!--                        </group>-->
+                        <group colspan="12" col="12">
+                            <field name="partner_id" invisible="1"/>
+                            <group colspan="4" col="12">
+                                <field name="coverer_type"/>
+                            </group>
+                            <group colspan="8" col="12" readonly="1">
+                                <field name="payer_company_id"
+                                       attrs="{'invisible': [('coverer_type', '=', 'patient')]}"
+                                       domain="[('cooperation_type', '=', coverer_type)]"/>
+                                <field name="payer_policy" attrs="{'invisible': [('coverer_type', '=', 'patient')]}"/>
+                                <!--                                                   attrs="{'invisible': [('coverer_type', '=', 'patient')]}"-->
+                                <!--                                                   domain="[('policy_holder', '=', partner_id)]"-->
+                                <!--                                                   context="{'default_policy_holder': partner_id}"/>-->
+
+                            </group>
+                        </group>
+                        <group colspan="12" col="12">
+                                    <field name="comment" string="Comment: "/>
+                        </group>
+                    </group>
+
+
+                    <div class="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-bg-[#ffffff] tw-rounded-[4px]"
+                         attrs="{'invisible': [('patient_id','!=',False)]}">
+                        <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-gap-1 tw-font-bold tw-text-[20px] tw-text-[#CCC]">
+                            <img width="100" src="/his_theme/static/src/img/select-patient.png" alt="select patient"/>
+                            <t>Please select or Create a Patient</t>
+                        </div>
+                    </div>
+                </group>
+                <group colspan="12" col="12" class="items-wrapper" attrs="{
+                        'invisible': [('patient_id', '=', False)],
+                    }">
+                    <field name="doctor_fee" invisible="1"/>
+                    <field name="doctor_fees"
+                           widget="UICX2ManyField"
+                           string="Select service"
+                           class="close-add-line close-action-bar"
+                           options="{
+                                'selectOnRowClick': '1',
+                                'selectionChangedField': 'doctor_fee',
+                                'no_open': True,
+                                'no_create': True
+                                }">
+                        <tree>
+                            <field name="service_id"/>
+                            <field name="service_tooltip" widget="list-tooltip" optional="show"/>
+                            <field name="first_visit_price"/>
+                            <field name="revisit_price"/>
+                            <field name="room"/>
+                            <field name="doctor_information_tooltip" widget="list-tooltip"/>
+                        </tree>
+                    </field>
+                </group>
+                <group colspan="12" col="12" class="items-wrapper">
+                    <div class="oe_chatter" style="display:block !important;">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </group>
+
+                <footer style="display: flex;justify-content: flex-end;">
+                    <div class="tw-flex tw-gap-3">
+                        <button string="Close" special="cancel" class="btn-secondary" close="1"/>
+                        <button string="Save" special="save" class="btn btn-primary" close="1"/>
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_proxy_amb_list_calendar" model="ir.ui.view">
+        <field name="name">his.proxy_patient_visit.calendar</field>
+        <field name="model">his.patient_visit</field>
+        <field name="arch" type="xml">
+            <calendar
+                    string="Ambulatory List"
+                    date_start="start_date_time"
+                    date_stop="end_date_time"
+                    create="1"
+                    js_class="amb-calendar"
+                    delete="0"
+                    scales="day"
+                    quick_add="0"
+                    event_open_popup="1"
+                    form_view_id="%(his.patient_ambulator_calendar_view_form)d">
+                <field name="patient_id"/>
+                <field name="is_emergency"/>
+                <field name="date"/>
+                <field name="start_date_time"/>
+                <field name="end_date_time"/>
+                <field name="product_type"/>
+                <field name="is_ongoing" />
+                <field name="phone_number" />
+                <field name="patient_category_id" />
+                <field name="comment" />
+                <field name="doctor_id"/>
+                <field name="type_receipt"/>
+                <field name="type_visit"/>
+                <field name="patient_status" string="Order Status"/>
+                <field name="start_time" widget="float-formate-time"/>
+                <field name="end_time" widget="float-formate-time"/>
+                <field name="main_service_id"/>
+                <field name="visiting_type"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="his_visit_pivot_view" model="ir.ui.view">
+            <field name="name">his.patient_visit.pivot</field>
+            <field name="model">his.patient_visit</field>
+            <field name="arch" type="xml">
+                <pivot string="Visits Analysis">
+                    <field name="doctor_id"/>
+                    <field name="company_id"/>
+                    <field name="main_service_id"/>
+                    <field name="patient_status" type="col"/>
+                </pivot>
+            </field>
+     </record>
+
+    <record id="action_proxy_amb_list" model="ir.actions.act_window">
+        <field name="name">Ambulatory List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.patient_visit</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_proxy_amb_list_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('patient_ambulator_calendar_view_form')}),
+                (0, 0, {'view_mode': 'calendar', 'view_id': ref('view_proxy_amb_list_calendar')})]"/>
+
+        <field name="context">
+            {
+                'open_filters_callback': 'custom_search_filter',
+                'reset_filters_callback': 'custom_search_reset',
+                'on_load_search_filter': 'action_save_domain',
+                'filter_is_active': False,
+                'form_model_name': 'his.order_wizard',
+                'form_context': {'default_patient_visit_id': 'resId'},
+                'calendar_context': {'default_patient_visit_id': 'id'},
+                'search_form_res_model': 'his.ambulatory_list_filter',
+                'selectionChangeCallback': 'action_open_form',
+                'search_form_view_id': 'his.view_ambulatory_list_filter',
+                'show_row_numbers': True,
+                "decoration_bg": True,
+                'hide_archive': True
+            }
+        </field>
+        <field name="search_view_id" ref="his.view_proxy_amb_list_search"/>
+        <field name="domain">[
+            ('doctor_id.user_id', '=', uid)
+        ]</field>
+
+    </record>
+
+    <menuitem id="menu_proxy_patient_visits"
+              name="Outpatient List"
+              parent="his.menu_doctor_main"
+              action="action_proxy_amb_list"
+              groups="his.group_his_admin,his.group_his_manager,his.group_his_doctor_ambulatory"
+              sequence="1"/>
+
+    <record id="view_proxy_amb_list_tree_for_admins" model="ir.ui.view">
+        <field name="name">his.proxy_patient_visit.for.admins.tree</field>
+        <field name="model">his.patient_visit</field>
+        <field name="arch" type="xml">
+            <tree js_class="custom-search-panel"
+                  decoration-primary="patient_status == 'registered'"
+                  decoration-warning="patient_status == 'reserved'"
+                  decoration-success="patient_status == 'consulted' or is_done == True"
+                  decoration-it="patient_status == 'diagnosed'"
+                  decoration-info="patient_status == 'treated'"
+                  decoration-muted="patient_status == 'discharged'"
+                  decoration-danger="patient_status == 'cancelled'"
+                  decoration-bf="patient_status == 'deleted'"
+                  create="0" delete="0"
+                  default_order="date desc">
+                <field name="is_done" invisible="1"/>
+
+                <field name="patient_id"/>
+                <field name="full_age" optional="hide"/>
+                <field name="doctor_id"/>
+                <field name="is_emergency" optional="hide"/>
+                <field name="type_visit"/>
+                <field name="main_service_id"/>
+                <field name="product_type" optional="hide"/>
+                <field name="patient_status" optional="hide"/>
+                <!-- <field name="doctor_schedule_id"/> -->
+                <field name="date"/>
+                <field name="display_schedule_time" optional="show"/>
+                <field name="payment_state"/>
+                <field name="create_date" optional="hide"/>
+                <field name="create_uid" optional="show"/>
+                <field name="done_date" optional="show"/>
+                <!--                <field name="department_id" optional="hide"/>-->
+                <!--                <field name="doctor_fee" optional="hide"/>-->
+                <!--                <field name="insurance_type" optional="hide"/>-->
+                <field name="patient_type" optional="hide"/>
+                <field name="phone_number" optional="hide"/>
+                <field name="referral_source_id" optional="hide"/>
+                <field name="visit_status" optional="hide"/>
+                <field name="visiting_type" optional="hide"/>
+
+                <field name="is_done" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_proxy_amb_list_for_admins" model="ir.actions.act_window">
+        <field name="name">Ambulatory List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.patient_visit</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_proxy_amb_list_tree_for_admins')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_proxy_amb_list_form')}),
+                (0, 0, {'view_mode': 'calendar', 'view_id': ref('view_proxy_amb_list_calendar')})]"/>
+                <!-- (0, 0, {'view_mode': 'pivot', 'view_id': ref('his_visit_pivot_view')})]"/> -->
+
+        <field name="context">
+            {
+                'open_filters_callback': 'custom_search_filter',
+                'reset_filters_callback': 'custom_search_reset',
+                'on_load_search_filter': 'action_visits_list_search_domain_for_admins',
+                'filter_is_active': False,
+                'form_model_name': 'his.order_wizard',
+                'form_context': {'default_patient_visit_id': 'resId'},
+                'calendar_context': {'default_patient_visit_id': 'id'},
+                'search_form_res_model': 'his.ambulatory_list_filter',
+                'search_form_view_id': 'his.view_visit_list_filter_for_admins',
+                'selectionChangeCallback': 'action_open_form',
+                "restrict_company": True,
+                "decoration_bg": True ,
+            }
+        </field>
+        <field name="search_view_id" ref="his.view_proxy_amb_list_search"/>
+        <field name="domain">[
+            ('date', '=', context_today()),
+            ('patient_status', '=', 'registered'),
+            ('is_ongoing', '=', True),
+            '|',
+            ('payment_state', '=', 'paid'),
+            ('payment_state', '=', 'partially_paid'),
+        ]</field>
+
+    </record>
+
+
+    <menuitem id="menu_proxy_patient_visits_for_admins"
+              name="Outpatient List (For Admins)"
+              parent="his.menu_doctor_main"
+              action="action_proxy_amb_list_for_admins"
+              groups="his.group_his_admin,his.group_his_manager"
+              sequence="2"/>
+
+
+    <record id="action_proxy_amb_list_readonly_view" model="ir.actions.act_window">
+        <field name="name">Ambulatory List (Readonly View)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.patient_visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_proxy_amb_list_tree_for_admins')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('view_proxy_amb_list_form')})]"/>
+                <!-- (0, 0, {'view_mode': 'pivot', 'view_id': ref('his_visit_pivot_view')})]"/> -->
+
+        <field name="context">
+            {
+                'open_filters_callback': 'custom_search_filter',
+                'reset_filters_callback': 'custom_search_reset',
+                'on_load_search_filter': 'action_visits_list_search_domain_for_admins',
+                'filter_is_active': False,
+                'form_model_name': 'his.order_wizard',
+                'form_context': {'default_patient_visit_id': 'resId'},
+                'calendar_context': {'default_patient_visit_id': 'id'},
+                'search_form_res_model': 'his.ambulatory_list_filter',
+                'search_form_view_id': 'his.view_visit_list_filter_for_admins',
+                'selectionChangeCallback': 'action_open_form_readonly',
+                "restrict_company": True,
+                "decoration_bg": True ,
+            }
+        </field>
+        <field name="search_view_id" ref="his.view_proxy_amb_list_search"/>
+        <field name="domain">[
+            ('date', '=', context_today()),
+            ('patient_status', '=', 'registered'),
+            ('is_ongoing', '=', True),
+            '|',
+            ('payment_state', '=', 'paid'),
+            ('payment_state', '=', 'partially_paid'),
+        ]</field>
+
+    </record>
+
+    <!-- Read-Only Outpatient List Menu -->
+    <menuitem id="menu_proxy_patient_visits_viewer"
+              name="Outpatient List (View Only)"
+              parent="his.menu_his"
+              action="action_proxy_amb_list_readonly_view"
+              groups="his.group_his_outpatient_viewer"
+              sequence="3"/>
+</odoo>

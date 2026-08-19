@@ -1,0 +1,11 @@
+<odoo>
+    <record id="emr_doc_pdf_report" model="ir.actions.report">
+        <field name="name">EMR Document</field>
+        <field name="model">his.emr_doc</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_his_emr_doc" />
+        <field name="report_name">his.emr_doc</field>
+        <field name="paperformat_id" ref="his.paperformat_emr_doc" />
+        <field name="print_report_name">'%s' % (object.name)</field>
+    </record>
+</odoo>

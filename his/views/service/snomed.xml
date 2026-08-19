@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_snomed_form" model="ir.ui.view">
+        <field name="name">his.snomed.form</field>
+        <field name="model">his.snomed</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_snomed_tree" model="ir.ui.view">
+        <field name="name">his.snomed.tree</field>
+        <field name="model">his.snomed</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_snomed_search" model="ir.ui.view">
+        <field name="name">his.snomed.search</field>
+        <field name="model">his.snomed</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code"/>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_snomed" model="ir.actions.act_window">
+        <field name="name">SNOMED CT Codes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.snomed</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="his.view_snomed_search"/>
+    </record>
+
+    <menuitem id="menu_snomed"
+              name="SNOMED CT Codes"
+              parent="his.menu_diagnosis_configurations"
+              action="action_snomed"
+              groups="his.group_his_admin,his.group_his_manager"
+              sequence="8"/>
+</odoo>

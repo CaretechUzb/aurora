@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- Inherit mail.channel form view to add HIS fields -->
+        <record id="mail_channel_view_form_inherit" model="ir.ui.view">
+            <field name="name">mail.channel.form.inherit</field>
+            <field name="model">mail.channel</field>
+            <field name="inherit_id" ref="mail.mail_channel_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[hasclass('o_label_nowrap')][1]" position="after">
+                    <group string="HIS Configuration" class="o_label_nowrap">
+                        <field name="is_his_channel"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit mail.channel tree view to add HIS fields -->
+        <record id="mail_channel_view_tree_inherit" model="ir.ui.view">
+            <field name="name">mail.channel.tree.inherit</field>
+            <field name="model">mail.channel</field>
+            <field name="inherit_id" ref="mail.mail_channel_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="is_his_channel"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit mail.channel search view to add HIS filters -->
+        <record id="mail_channel_view_search_inherit" model="ir.ui.view">
+            <field name="name">mail.channel.search.inherit</field>
+            <field name="model">mail.channel</field>
+            <field name="inherit_id" ref="mail.mail_channel_view_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <separator/>
+                    <filter string="HIS Channels" name="his_channels" domain="[('is_his_channel', '=', True)]"/>
+                    <filter string="Regular Channels" name="regular_channels" domain="[('is_his_channel', '=', False)]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

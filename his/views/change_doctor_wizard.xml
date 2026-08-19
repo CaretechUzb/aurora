@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Change Doctor Wizard Form View -->
+    <record id="view_change_doctor_wizard_form" model="ir.ui.view">
+        <field name="name">his.change_doctor_wizard.form</field>
+        <field name="model">his.change_doctor_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Change Doctor and Recalculate Fees">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Change Doctor for Selected Visits</h1>
+                    </div>
+
+                    <!-- Visit Count -->
+                    <group>
+                        <group>
+                            <field name="visit_count" readonly="1"/>
+                            <field name="patient_visit_ids" invisible="1"/>
+                            <field name="available_employee_ids" invisible="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Warning Messages -->
+                    <div class="alert alert-warning" role="alert" attrs="{'invisible': [('warning_message', '=', False)]}">
+                        <field name="warning_message" nolabel="1"/>
+                    </div>
+
+                    <!-- Doctor Selection -->
+                    <group>
+                        <group>
+                            <field name="selected_employee_id"
+                                   options="{'no_create': True, 'no_create_edit': True}"
+                                   attrs="{'required': [('visit_count', '>', 0)]}"/>
+                        </group>
+                    </group>
+
+                    <!-- Instructions -->
+                    <div class="alert alert-info" role="alert">
+                        <p><strong>This action will:</strong></p>
+                        <ul>
+                            <li>Replace the doctor for all selected visits</li>
+                            <li>Update the doctor fee configuration</li>
+                            <li>Recalculate doctor share and bonus amounts based on the new doctor's settings</li>
+                        </ul>
+                        <p><strong>Note:</strong> Service prices will NOT be changed. Only employees with valid doctor fees for the services in the selected visits will be available for selection.</p>
+                    </div>
+                </sheet>
+
+                <!-- Footer Buttons -->
+                <footer>
+                    <button name="action_confirm"
+                            type="object"
+                            string="Confirm"
+                            class="btn-primary"
+                            attrs="{'invisible': [('visit_count', '=', 0)]}"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Server Action for Change Doctor -->
+    <record id="action_patient_visit_change_doctor" model="ir.actions.server">
+        <field name="name">Change Doctor</field>
+        <field name="model_id" ref="his.model_his_patient_visit"/>
+        <field name="binding_model_id" ref="his.model_his_patient_visit"/>
+        <field name="binding_view_types">list</field>
+        <field name="groups_id" eval="[(4, ref('his.group_his_admin'))]"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    action = {
+        'name': 'Change Doctor',
+        'type': 'ir.actions.act_window',
+        'res_model': 'his.change_doctor_wizard',
+        'view_mode': 'form',
+        'target': 'new',
+        'context': {
+            'active_ids': records.ids,
+            'active_model': 'his.patient_visit',
+        },
+    }
+        </field>
+    </record>
+</odoo>

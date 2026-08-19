@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_product_branch_configurations_tree" model="ir.ui.view">
+        <field name="name">product.branch.configurations.tree</field>
+        <field name="model">his.product.branch.conf</field>
+        <field name="arch" type="xml">
+            <tree string="Product Branch Configurations" delete="false">
+                <field name="company_id"/>
+                <field name="doctors_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_branch_configurations_form" model="ir.ui.view">
+        <field name="name">product.branch.configurations.form</field>
+        <field name="model">his.product.branch.conf</field>
+        <field name="arch" type="xml">
+            <form string="Product Branch Configurations">
+                <sheet>
+                    <group name="ko'rinmaslar)" invisible="1">
+                        <field name="product_type_selection"/>
+                        <field name="service_id"/>
+                        <field name="base_price"/>
+                        <field name="base_service_duration"/>
+                        <field name="base_share_type"/>
+                        <field name="base_share_value"/>
+                        <field name="in_queue_doctor_list"/>
+                        <!-- <field name="schedule_type"/> -->
+                        <!-- <field name="base_recommendation_bonus_type"/>
+                        <field name="base_recommendation_bonus_value"/> -->
+                    </group>
+                    <group col="12" colspan="12">
+                            <group col="12" colspan="8">
+                                <field name="company_id" options="{'no_create':True, 'no_open':True}"/>
+                            </group>
+                            <group col="12" colspan="4">
+                                <field name="in_queue_doctor_id"
+                                    options="{'no_create':True, 'no_open':True}"
+                                    domain="in_queue_doctor_list"/>
+                            </group>
+                    </group>
+                <group>
+                    <field
+                        name="service_doctors"
+                        domain="[('company_id','=',company_id),('service_id','=','service_id')]"
+                        context="{
+                            'default_first_visit_price': base_price,
+                            'default_revisit_price': base_price,
+                            'default_share_type': base_share_type,
+                            'default_share_value': base_share_value,
+                            'default_service_duration': base_service_duration,
+                            'default_service_id': service_id,
+                            'default_company_id': company_id
+                        }">
+                                                    <!-- 'default_recommendation_bonus_type': base_recommendation_bonus_type,
+                            'default_recommendation_bonus_value': base_recommendation_bonus_value, -->
+
+                        <tree readonly="1">
+                            <field name="service_id" invisible="1" />
+<!--                        <field name="category_base_id" />-->
+                            <field name="doctor_id"/>
+                            <field name="first_visit_price"/>
+                            <field name="revisit_price"/>
+                            <field name="service_duration"/>
+                            <field name="room"/>
+                            <field name="share_type" groups='his.group_his_admin,his.group_his_manager'/>
+                            <field name="share_value" groups='his.group_his_admin,his.group_his_manager'/>
+                            <!-- <field name="recommendation_bonus_type" />
+                            <field name="recommendation_bonus_value" /> -->
+                        </tree>
+                    </field>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_product_branch_configurations" model="ir.actions.act_window">
+        <field name="name">Product Branch Configurations</field>
+        <field name="res_model">his.product.branch.conf</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

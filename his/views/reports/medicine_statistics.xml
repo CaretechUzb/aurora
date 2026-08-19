@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_proxy_medical_statistics_report_tree" model="ir.ui.view">
+        <field name="name">his.proxy_medical_statistics_report.tree</field>
+        <field name="model">his.medical_statistics_report</field>
+        <field name="arch" type="xml">
+            <tree js_class="list_handle_change" create="0">
+                <field name="prescription_date"/>
+                <field name="medicine_prescription_name"/>
+                <field name="unit"/>
+                <field name="quantity"/>
+                <field name="unit_price"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_medical_statistics_report" model="ir.actions.act_window">
+        <field name="name">Medicine Statistics</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.medical_statistics_report</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('view_proxy_medical_statistics_report_tree')})]"/>
+        <field name="context">
+            {
+                'search_default_filter_child': 1,
+                'use_custom_search': '1',
+                'open_filters_callback': 'custom_search_filter',
+                'reset_filters_callback': 'custom_search_reset',
+                'filter_is_active': False
+            }
+         </field>
+
+    </record>
+
+
+    <menuitem id="menu_medical_statistics_report"
+              name="Medicine Statistics"
+              parent="his.menu_report_management_main"
+              action="action_medical_statistics_report"
+              sequence="2"/>
+
+</odoo>

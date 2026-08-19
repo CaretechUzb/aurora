@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="invoice_receipt_report_thermal">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <t t-set="o" t-value="o.with_context(lang=lang)" />
+                    <!-- <t t-set="address">
+                        <address />
+                        <div>
+                            <t />
+                            <span />
+                        </div>
+                    </t> -->
+                    <style>
+                        table { border-collapse: collapse; }
+                        td {
+                            font-size: 5px;
+                        }
+                        tr, td {
+                            font-size: 5px; padding:3px
+                        }
+                        .border-none, .border-none * {
+                            border: none!important;
+                        }
+                        .table-item-font {
+                            font-size: 6px;
+                            font-weight: bold;
+                        }
+                        .table-item-font-7 {
+                            font-size: 7px;
+                            font-weight: bold;
+                        }
+                        .table-phone-number {
+                            font-size: 7px;
+                            margin-top: -8px;
+                        }
+                    </style>
+
+                    <center>
+                        <div style="width: 100%;">
+                            <img src='/web/binary/company_logo'
+                                style="width:45%" class="center" />
+                            <br />
+
+                            <table style="margin-top: 0px; border: none;" class="text-center">
+                                <tr>
+                                    <td style="border: none;">
+                                        <span class="table-item-font"
+                                            t-field="o.company_id.street" />
+                                        <span class="table-item-font"
+                                            t-field="o.company_id.city" />
+                                        <span class="table-item-font"
+                                            t-field="o.company_id.state_id" />
+                                        <span class="table-item-font"
+                                            t-field="o.company_id.country_id" />
+                                        <br />
+
+                                        <strong class="table-phone-number">Phone:</strong>
+                                        <span class="table-item-font-7"
+                                            t-field="o.company_id.phone" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </center>
+
+                    <div>
+                        <table class="border-none">
+                            <tr>
+                                <td>
+                                    <strong>Date Time</strong>
+                                    <span
+                                        t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')" />
+                                    <br />
+                                    <strong>Order</strong>
+                                    <span t-field="o.name" />
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="border-none" style="margin-top: -8px">
+                            <tr>
+                                <td>
+                                    <span t-field="o.company_id" />
+                                    <br />
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="border-none" style="margin-top: -8px;">
+                            <tr>
+                                <td>
+                                    <strong>User:</strong>
+                                    <span t-field="o.user_id" />
+                                    <br />
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <div class="page">
+                            <t t-set="display_discount"
+                                t-value="any([l.discount for l in o.invoice_line_ids])" />
+
+                            <table class="table table-sm o_main_table" name="invoice_line_table">
+                                <thead>
+                                    <tr>
+                                        <th name="th_description" class="text-left">
+                                            <span>SERVICES</span>
+                                        </th>
+                                        <th name="th_quantity" class="text-left">
+                                            <span>QUANTITY</span>
+                                        </th>
+                                        <th name="th_subtotal" class="text-right">
+                                            <span
+                                                groups="account.group_show_line_subtotals_tax_excluded">
+                                                AMOUNT</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+
+                                    <t t-set="current_subtotal" t-value="0" />
+                                    <t t-set="total_price_units" t-value="0" />
+                                    <t t-set="dis" t-value="0" />
+                                    <t t-set="discount" t-value="0" />
+                                    <t t-set="total" t-value="0" />
+                                    <t t-set="total_discount" t-value="0" />
+                                    <t t-foreach="o.invoice_line_ids" t-as="line">
+
+                                        <t t-set="current_subtotal"
+                                            t-value="current_subtotal + line.price_subtotal"
+                                            groups="account.group_show_line_subtotals_tax_excluded" />
+                                        <t t-set="current_subtotal"
+                                            t-value="current_subtotal + line.price_total"
+                                            groups="account.group_show_line_subtotals_tax_included" />
+                                        <t t-set="total_discount"
+                                            t-value="total_discount + line.discount" />
+                                        <t t-set="total_price_units"
+                                            t-value="total_price_units + line.price_unit" />
+
+                                        <tr
+                                            t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                            <t 
+                                                name="account_invoice_line_accountable">
+                                                <td name="account_invoice_line_name"
+                                                    class="text-left">
+                                                    <span t-field="line.name" />
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-field="line.quantity" />
+                                                    <span t-field="line.uom_id"
+                                                        groups="uom.group_uom" />
+                                                </td>
+                                                <td class="text-right o_price_total">
+                                                    <span t-field="line.price_unit" />
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <!-- Total Section part-->
+                            <center>
+                                <div style="float:right" id="total">
+                                    <table class="table table-sm" style="page-break-inside: avoid;">
+                                        <tr class="border-black o_subtotal" style="">
+                                            <td>
+                                                <strong>Subtotal</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="total_price_units" />
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black o_total">
+                                            <td>
+                                                <strong>Amount Total</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <t t-set="total" t-value="total_price_units" />
+                                                <span t-esc="'%.2f'% total" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </center>
+                            <!-- end total section !-->
+                            <div class="">
+                                <div id="total" class="row">
+                                    <div>
+                                        <table class="table table-sm"
+                                            style="page-break-inside: avoid;">
+
+                                            <tr class=" o_subtotal" style="">
+                                            </tr>
+                                            <tr class=" o_total">
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                    </div>
+
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>

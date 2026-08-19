@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ir_attachment_show_pdf_form" model="ir.ui.view">
+        <field name="name">ir_attachment_show_pdf.view.form</field>
+        <field name="model">ir.attachment</field>
+        <field name="arch" type="xml">
+            <form readonly="1" create="0" edit="0">
+                <sheet>
+                    <group>
+                        <div class="tw-w-full tw-max-h-[75vh] tw-overflow-auto">
+                            <field name="datas" widget="pdf-viewer" class="tw-w-full" readonly="1" />
+                        </div>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Close" type="object"  special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

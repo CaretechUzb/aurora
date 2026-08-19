@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_his_drug_dosage_create_edit_form" model="ir.ui.view">
+        <field name="name">his.drug_dosage.create.edit.form</field>
+        <field name="model">his.drug_dosage</field>
+        <field name="arch" type="xml">
+            <form string="Drug Dosage">
+                <group col="12" colspan="12">
+                    <group col="12" colspan="12">
+                        <field name="product_id" readonly="1" options="{'no_open': True, 'no_create': True}"/>
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="dosage" string="Amount"/>
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="dosage_amount"/>
+                    </group>
+
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="medicine_prescription_view_form" model="ir.ui.view">
+        <field name="name">medicine_prescription.view.form</field>
+        <field name="model">his.medicine_prescription</field>
+        <field name="arch" type="xml">
+            <form string="Medicine prescription">
+                <group col="12" colspan="12" class="items-wrapper">
+                    <field name="doctor_id" invisible="1" />
+                    <field name="medicine_ids_domain" invisible="1" />
+                    <field name="allow_dosage_selection" invisible="1"/>
+                    <group colspan="12" col="12" class="!tw-items-end input-remove-margin">
+                        <group colspan="4" col="12" class="!tw-m-0">
+                            <field name="used_template_id"
+                                domain="[('doctor_id', '=', doctor_id), ('is_template', '=', True)]" />
+                        </group>
+                        <group colspan="3" col="12" class="!tw-m-0">
+                            <button name="action_load_template" string="Load" type="object"
+                                class="btn-primary" />
+                        </group>
+                    </group>
+                    <group colspan="6" col="12">
+                        <field name="prescription_type" />
+                    </group>
+                    <group colspan="6" col="12">
+                        <field name="medicine_type" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="medicine_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="allow_dosage_selection" invisible="1"/>
+                                <field name="medicine_id"
+                                    domain="parent.medicine_ids_domain"
+                                    options="{ 'no_create': 1, 'no_open': 1 }" />
+                                <field name="drug_dosage_id" domain="[('product_id', '=', medicine_id)]"
+                                    context="{'default_product_id': medicine_id}"
+                                    options="{'create_edit': True, 'no_open': 1, 'always_show_create_edit': True}"
+                                    attrs="{'column_invisible': [('parent.allow_dosage_selection', '=', False)]}"/>
+                                <field name="dosage"
+                                    options="{'rightAlign': False, 'groupSeparator': ' ', 'digits': 2 }"
+                                    attrs="{'column_invisible': [('parent.allow_dosage_selection', '=', True)]}"
+                                    widget="mask" />
+                                <field name="dosage_unit_id" options='{"no_open": True}'/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="administration_method" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="sleep_regarding" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="food_regarding" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="start_date" options="{'datepicker': {'minDate':'01-01-2024' }}" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="duration"
+                            options="{'currency': True, 'rightAlign': False, 'groupSeparator': ' ' }"
+                            widget="mask" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="duration_unit" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="expire_date" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="reception_per_day"
+                            options="{'currency': True, 'rightAlign': False, 'groupSeparator': ' ' }"
+                            widget="mask" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="reception_times_ids">
+                            <tree editable="bottom" create="false" edit="true" delete="false">
+                                <field name="time" widget="float-formate-time"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group col="12" colspan="12"
+                        attrs="{'invisible': [('administration_method',
+                        'not in', ['intravenously', 'intraarterial'])]}">
+                        <field name="infusion_rate" />
+                        <field name="infusion_speed" />
+                        <field name="infusion_speed_unit" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="notes" />
+                    </group>
+                    <!-- <field name="continuous_duration" />
+                    <field name="continuous_duration_unit" />
+                    <field name="break_duration" />
+                    <field name="break_duration_unit" /> -->
+
+                </group>
+                <footer>
+                    <div class="!tw-flex !tw-justify-between !tw-items-center !tw-w-full">
+                        <div>
+                            <button name="action_save_as_template" string="Save as template"
+                                type="object"
+                                class="btn-secondary" />
+                        </div>
+                        <div class="tw-flex tw-gap-3">
+                            <button name="action_save" string="Save" type="object" class="btn-primary" />
+                            <button string="Cancel" class="btn-secondary" type="object" name="action_cancel" />
+                        </div>
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="medicine_prescription_view_form_readonly" model="ir.ui.view">
+        <field name="name">medicine_prescription.view.form.readonly</field>
+        <field name="model">his.medicine_prescription</field>
+        <field name="arch" type="xml">
+            <form string="Medicine prescription" edit="0" create="0">
+                <group col="12" colspan="12" class="items-wrapper">
+                    <field name="doctor_id" invisible="1" />
+                    <field name="medicine_ids_domain" invisible="1" />
+                    <field name="allow_dosage_selection" invisible="1" />
+                    <group colspan="6" col="12">
+                        <field name="prescription_type" />
+                    </group>
+                    <group colspan="6" col="12">
+                        <field name="medicine_type" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="medicine_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="allow_dosage_selection" invisible="1"/>
+                                <field name="medicine_id" domain="parent.medicine_ids_domain"
+                                    options="{ 'no_create': 1, 'no_open': 1 }" />
+                                <field name="drug_dosage_id"
+                                    string="Dosage"
+                                    domain="[('product_id', '=', medicine_id)]"
+                                    attrs="{'column_invisible': [('parent.allow_dosage_selection', '=', False)]}"
+                                    options="{'no_open': 1}" />
+                                <field name="dosage"
+                                    attrs="{'column_invisible': [('parent.allow_dosage_selection', '=', True)]}"
+                                    options="{'rightAlign': False, 'groupSeparator': ' ', 'digits': 2 }"
+                                    widget="mask" />
+                                <field name="dosage_unit_id" options="{'no_open': 1}" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="administration_method" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="sleep_regarding" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="food_regarding" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="start_date" options="{'datepicker': {'minDate':'01-01-2024' }}" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="duration"
+                            options="{'currency': True, 'rightAlign': False, 'groupSeparator': ' ' }"
+                            widget="mask" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="duration_unit" />
+                    </group>
+                    <group col="12" colspan="6">
+                        <field name="expire_date" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="reception_per_day"
+                            options="{'currency': True, 'rightAlign': False, 'groupSeparator': ' ' }"
+                            widget="mask" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="reception_times_ids">
+                            <tree editable="bottom" create="false" edit="true" delete="false">
+                                <field name="time" placeholder="HH:MM" widget="float-formate-time"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group col="12" colspan="12"
+                        attrs="{'invisible': [('administration_method',
+                        'not in', ['intravenously', 'intraarterial'])]}">
+                        <field name="infusion_rate" />
+                        <field name="infusion_speed" />
+                        <field name="infusion_speed_unit" />
+                    </group>
+                    <group col="12" colspan="12">
+                        <field name="notes" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

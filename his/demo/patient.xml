@@ -1,0 +1,443 @@
+<odoo>
+    <data noupdate="1">
+        <record id='model_res_partner_1' model='res.partner'>
+            <field name='name'>Mashrab Dilshodov Burhanov</field>
+        </record>
+        <record id='model_his_patient_1' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_1'/>
+            <field name='age'>45</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Mashrab</field>
+            <field name='last_name'>Dilshodov</field>
+            <field name='middle_name'>Burhanovich</field>
+            <field name='phone_number'>+998 964320754</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Botir</field>
+            <field name='guardian_last_name'>Khamidov</field>
+            <field name='guardian_middle_name'>Gulomovich</field>
+            <field name='guardian_phone'>+998 958894852</field>
+            <field name='blood_group'>AB-</field>
+            <field name='relation'>spouse</field>
+            <field name="foreigner">true</field>
+        </record>
+        <record id='model_res_partner_2' model='res.partner'>
+            <field name='name'>Murod Nasriddinov Xalilovich</field>
+        </record>
+        <record id='model_his_patient_2' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_2'/>
+            <field name='age'>50</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Murod</field>
+            <field name='last_name'>Nasriddinov</field>
+            <field name='middle_name'>Xalilovich</field>
+            <field name='phone_number'>+998 907133348</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Tursun</field>
+            <field name='guardian_last_name'>Djuraev</field>
+            <field name='guardian_middle_name'>Otabekov</field>
+            <field name='guardian_phone'>+998 951485680</field>
+            <field name='blood_group'>A+</field>
+            <field name='relation'>spouse</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_3' model='res.partner'>
+            <field name='name'>Ismoil Ibragimov Zubaydullayovich</field>
+        </record>
+        <record id='model_his_patient_3' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_3'/>
+            <field name='age'>29</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Ismoil</field>
+            <field name='last_name'>Ibragimov</field>
+            <field name='middle_name'>Zubaydullayovich</field>
+            <field name='phone_number'>+998 999837052</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Sunnat</field>
+            <field name='guardian_last_name'>Qodirov</field>
+            <field name='guardian_middle_name'>Dilshodovich</field>
+            <field name='guardian_phone'>+998 945212710</field>
+            <field name='blood_group'>AB+</field>
+            <field name='relation'>sibling</field>
+            <field name="foreigner">true</field>
+        </record>
+        <record id='model_res_partner_4' model='res.partner'>
+            <field name='name'>Usmon Xalilov Abdullayovich</field>
+        </record>
+        <record id='model_his_patient_4' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_4'/>
+            <field name='age'>54</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Usmon</field>
+            <field name='last_name'>Xalilov</field>
+            <field name='middle_name'>Abdullayovich</field>
+            <field name='phone_number'>+998 917747159</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Nodir</field>
+            <field name='guardian_last_name'>Qurbonov</field>
+            <field name='guardian_middle_name'>Yulchiovich</field>
+            <field name='guardian_phone'>+998 977645415</field>
+            <field name='blood_group'>AB-</field>
+            <field name='relation'>other</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_5' model='res.partner'>
+            <field name='name'>Muhsin Dilshodov Jamolovich</field>
+        </record>
+        <record id='model_his_patient_5' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_5'/>
+            <field name='age'>52</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Muhsin</field>
+            <field name='last_name'>Dilshodov</field>
+            <field name='middle_name'>Jamolovich</field>
+            <field name='phone_number'>+998 926682124</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Furqat</field>
+            <field name='guardian_last_name'>Rasulov</field>
+            <field name='guardian_middle_name'>Burhanovich</field>
+            <field name='guardian_phone'>+998 963535010</field>
+            <field name='blood_group'>A+</field>
+            <field name='relation'>sibling</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_6' model='res.partner'>
+            <field name='name'>Habibulloh Usmonov Boboovich</field>
+        </record>
+        <record id='model_his_patient_6' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_6'/>
+            <field name='age'>41</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Habibulloh</field>
+            <field name='last_name'>Usmonov</field>
+            <field name='middle_name'>Boboovich</field>
+            <field name='phone_number'>+998 979114808</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Alim</field>
+            <field name='guardian_last_name'>Umarov</field>
+            <field name='guardian_middle_name'>Kasimovich</field>
+            <field name='guardian_phone'>+998 913015589</field>
+            <field name='blood_group'>B-</field>
+            <field name='relation'>sibling</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_7' model='res.partner'>
+            <field name='name'>Javlon Boboev Davronovich</field>
+        </record>
+        <record id='model_his_patient_7' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_7'/>
+            <field name='age'>18</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Javlon</field>
+            <field name='last_name'>Boboev</field>
+            <field name='middle_name'>Davronovich</field>
+            <field name='phone_number'>+998 944220257</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Muhsin</field>
+            <field name='guardian_last_name'>Rustamov</field>
+            <field name='guardian_middle_name'>Qurbonovich</field>
+            <field name='guardian_phone'>+998 942071732</field>
+            <field name='blood_group'>O-</field>
+            <field name='relation'>other</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_8' model='res.partner'>
+            <field name='name'>Tursun Yulchiev Sultonovich</field>
+        </record>
+        <record id='model_his_patient_8' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_8'/>
+            <field name='age'>47</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Tursun</field>
+            <field name='last_name'>Yulchiev</field>
+            <field name='middle_name'>Sultonov</field>
+            <field name='phone_number'>+998 943940090</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Alim</field>
+            <field name='guardian_last_name'>Sultonov</field>
+            <field name='guardian_middle_name'>Zubaydullayovich</field>
+            <field name='guardian_phone'>+998 901475591</field>
+            <field name='blood_group'>AB+</field>
+            <field name='relation'>spouse</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_9' model='res.partner'>
+            <field name='name'>Murod Ikromov Davronovich</field>
+        </record>
+        <record id='model_his_patient_9' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_9'/>
+            <field name='age'>63</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Murod</field>
+            <field name='last_name'>Ikromov</field>
+            <field name='middle_name'>Davronovich</field>
+            <field name='phone_number'>+998 975008129</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Murad</field>
+            <field name='guardian_last_name'>Boboev</field>
+            <field name='guardian_middle_name'>Xasanovich</field>
+            <field name='guardian_phone'>+998 956196045</field>
+            <field name='blood_group'>A-</field>
+            <field name='relation'>parent</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_10' model='res.partner'>
+            <field name='name'>Sabir Eshonov Boboovich</field>
+        </record>
+        <record id='model_his_patient_10' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_10'/>
+            <field name='age'>47</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Sabir</field>
+            <field name='last_name'>Eshonov</field>
+            <field name='middle_name'>Boboovich</field>
+            <field name='phone_number'>+998 905257986</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Akmal</field>
+            <field name='guardian_last_name'>Nazarov</field>
+            <field name='guardian_middle_name'>Yuldoshovich</field>
+            <field name='guardian_phone'>+998 920341769</field>
+            <field name='blood_group'>A+</field>
+            <field name='relation'>parent</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_11' model='res.partner'>
+            <field name='name'>Javlon Yulchiev Yuldoshovich</field>
+        </record>
+        <record id='model_his_patient_11' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_11'/>
+            <field name='age'>76</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Javlon</field>
+            <field name='last_name'>Yulchiev</field>
+            <field name='middle_name'>Yuldoshovich</field>
+            <field name='phone_number'>+998 961525771</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Akmal</field>
+            <field name='guardian_last_name'>Jamolov</field>
+            <field name='guardian_middle_name'>Boboovich</field>
+            <field name='guardian_phone'>+998 953755614</field>
+            <field name='blood_group'>B-</field>
+            <field name='relation'>parent</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_12' model='res.partner'>
+            <field name='name'>Gafur Murodov Nasriddinovich</field>
+        </record>
+        <record id='model_his_patient_12' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_12'/>
+            <field name='age'>31</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Gafur</field>
+            <field name='last_name'>Murodov</field>
+            <field name='middle_name'>Nasriddinovich</field>
+            <field name='phone_number'>+998 940747671</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Ikrom</field>
+            <field name='guardian_last_name'>Bazarov</field>
+            <field name='guardian_middle_name'>Eshonovich</field>
+            <field name='guardian_phone'>+998 997485232</field>
+            <field name='blood_group'>O-</field>
+            <field name='relation'>spouse</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_13' model='res.partner'>
+            <field name='name'>Bobur Yuldoshev Ivanovich</field>
+        </record>
+        <record id='model_his_patient_13' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_13'/>
+            <field name='age'>73</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Bobur</field>
+            <field name='last_name'>Yuldoshev</field>
+            <field name='middle_name'>Ivanov</field>
+            <field name='phone_number'>+998 909734761</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Gafur</field>
+            <field name='guardian_last_name'>Qosimov</field>
+            <field name='guardian_middle_name'>Djuraovich</field>
+            <field name='guardian_phone'>+998 945865851</field>
+            <field name='blood_group'>B+</field>
+            <field name='relation'>other</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_14' model='res.partner'>
+            <field name='name'>Rustam Qodirov Nuriddinovich</field>
+        </record>
+        <record id='model_his_patient_14' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_14'/>
+            <field name='age'>49</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Rustam</field>
+            <field name='last_name'>Qodirov</field>
+            <field name='middle_name'>Nuriddinovich</field>
+            <field name='phone_number'>+998 906128875</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Olim</field>
+            <field name='guardian_last_name'>Jamolov</field>
+            <field name='guardian_middle_name'>Dilshodovich</field>
+            <field name='guardian_phone'>+998 925806097</field>
+            <field name='blood_group'>B-</field>
+            <field name='relation'>sibling</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_15' model='res.partner'>
+            <field name='name'>Gulom Djuraev Nazarovich</field>
+        </record>
+        <record id='model_his_patient_15' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_15'/>
+            <field name='age'>65</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Gulom</field>
+            <field name='last_name'>Djuraev</field>
+            <field name='middle_name'>Nazarovich</field>
+            <field name='phone_number'>+998 901675256</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Akmal</field>
+            <field name='guardian_last_name'>Kasimovich</field>
+            <field name='guardian_middle_name'>Ganiovich</field>
+            <field name='guardian_phone'>+998 907409851</field>
+            <field name='blood_group'>O-</field>
+            <field name='relation'>parent</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_16' model='res.partner'>
+            <field name='name'>Alim Kurbanov Yuldashovich</field>
+        </record>
+        <record id='model_his_patient_16' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_16'/>
+            <field name='age'>52</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Alim</field>
+            <field name='last_name'>Kurbanov</field>
+            <field name='middle_name'>Yuldashovich</field>
+            <field name='phone_number'>+998 979157775</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Aziz</field>
+            <field name='guardian_last_name'>Yuldoshev</field>
+            <field name='guardian_middle_name'>Khalilovich</field>
+            <field name='guardian_phone'>+998 900291653</field>
+            <field name='blood_group'>AB-</field>
+            <field name='relation'>sibling</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_17' model='res.partner'>
+            <field name='name'>Munavvar Xalilov Rustamovich</field>
+        </record>
+        <record id='model_his_patient_17' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_17'/>
+            <field name='age'>46</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Munavvar</field>
+            <field name='last_name'>Xalilov</field>
+            <field name='middle_name'>Rustamovich</field>
+            <field name='phone_number'>+998 907627068</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Navruz</field>
+            <field name='guardian_last_name'>Yulchiev</field>
+            <field name='guardian_middle_name'>Azizovich</field>
+            <field name='guardian_phone'>+998 943855620</field>
+            <field name='blood_group'>AB-</field>
+            <field name='relation'>spouse</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_18' model='res.partner'>
+            <field name='name'>Said Dilshodov Ganiovich</field>
+        </record>
+        <record id='model_his_patient_18' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_18'/>
+            <field name='age'>23</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Said</field>
+            <field name='last_name'>Dilshodov</field>
+            <field name='middle_name'>Ganiovich</field>
+            <field name='phone_number'>+998 929784857</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Tursun</field>
+            <field name='guardian_last_name'>Yulchiev</field>
+            <field name='guardian_middle_name'>Zokirovich</field>
+            <field name='guardian_phone'>+998 988359680</field>
+            <field name='blood_group'>O+</field>
+            <field name='relation'>spouse</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_19' model='res.partner'>
+            <field name='name'>Vohid Yuldashev Muhammadiovich</field>
+        </record>
+        <record id='model_his_patient_19' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_19'/>
+            <field name='age'>42</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Vohid</field>
+            <field name='last_name'>Yuldashev</field>
+            <field name='middle_name'>Muhammadiovich</field>
+            <field name='phone_number'>+998 944412242</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Javlon</field>
+            <field name='guardian_last_name'>Karimov</field>
+            <field name='guardian_middle_name'>Yulchiovich</field>
+            <field name='guardian_phone'>+998 963034034</field>
+            <field name='blood_group'>A-</field>
+            <field name='relation'>parent</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_20' model='res.partner'>
+            <field name='name'>Hayot Yuldashev Zubaydullayovich</field>
+        </record>
+        <record id='model_his_patient_20' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_20'/>
+            <field name='age'>55</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Hayot</field>
+            <field name='last_name'>Yuldashev</field>
+            <field name='middle_name'>Zubaydullayovich</field>
+            <field name='phone_number'>+998 963413115</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Anvar</field>
+            <field name='guardian_last_name'>Khamidov</field>
+            <field name='guardian_middle_name'>Hamidovich</field>
+            <field name='guardian_phone'>+998 938478086</field>
+            <field name='blood_group'>O+</field>
+            <field name='relation'>sibling</field>
+            <field name="foreigner">true</field>
+
+        </record>
+        <record id='model_res_partner_21' model='res.partner'>
+            <field name='name'>Khusan Muhammadiev Asadovich</field>
+        </record>
+        <record id='model_his_patient_21' model='his.patient'>
+            <field name='partner_id' ref='model_res_partner_21'/>
+            <field name='age'>50</field>
+            <field name='gender'>male</field>
+            <field name='first_name'>Khusan</field>
+            <field name='last_name'>Muhammadiev</field>
+            <field name='middle_name'>Asadov</field>
+            <field name='phone_number'>+998 984463118</field>
+            <field name='passport_serial'>AB 1553311</field>
+            <field name='guardian_first_name'>Botir</field>
+            <field name='guardian_last_name'>Khamidov</field>
+            <field name='guardian_middle_name'>Gafurovich</field>
+            <field name='guardian_phone'>+998 931086411</field>
+            <field name='blood_group'>O+</field>
+            <field name='relation'>other</field>
+            <field name="foreigner">true</field>
+
+        </record>
+    </data>
+</odoo>

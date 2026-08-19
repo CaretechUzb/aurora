@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_payer_company_form" model="ir.ui.view">
+        <field name="name">his.payer_company.form</field>
+        <field name="model">his.payer_company</field>
+        <field name="arch" type="xml">
+            <form>
+                <group invisible="1">
+                    <field name="selected_payer_contracts"/>
+                    <field name="selected_changed_field_many"/>
+                    <field name="is_company"/>
+                    <!-- <field name="partner_id"/> -->
+                </group>
+                <group class="items-wrapper">
+                    <notebook>
+                        <page string="Payer Company" name="company_info">
+                            <group col="12" colspan="12">
+                                <group col="12" colspan="12">
+                                    <!-- <field name="partner_id" invisible="1"/> -->
+                                    <group colspan="4" col="12">
+                                        <field name="name" />
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="cooperation_type"/>
+                                    </group>
+                                </group>
+                                <!--                                <group col="12" colspan="12">-->
+                                <!--                                    <group colspan="4" col="12">-->
+                                <!--                                        <field name="federate_number"/>-->
+                                <!--                                    </group>-->
+                                <!--                                    <group colspan="4" col="12">-->
+                                <!--                                        <field name="correspondent_account"/>-->
+                                <!--                                    </group>-->
+                                <!--                                </group>-->
+                                <group col="12" colspan="12">
+                                    <group colspan="4" col="12">
+                                        <field name="start_date" options="{ 'datepicker': {'format':'dd/MM/yyyy'} }"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="end_date" options="{ 'datepicker': {'format':'dd/MM/yyyy'} }"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="organization_name"/>
+                                    </group>
+                                </group>
+                                <group col="12" colspan="12">
+                                    <group colspan="4" col="12">
+                                        <field name="inn"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="checkpoint"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="ogrn"/>
+                                    </group>
+                                </group>
+                                <group col="12" colspan="12">
+                                    <group colspan="4" col="12">
+                                        <field name="legal_address"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="actual_address"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="ceo"/>
+                                    </group>
+                                </group>
+                                <group col="12" colspan="12">
+                                    <group colspan="4" col="12">
+                                        <field name="chief_accountant"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="bank_bic"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="bank_name"/>
+                                    </group>
+                                </group>
+                                <group col="12" colspan="12">
+                                    <group colspan="4" col="12">
+                                        <field name="email"/>
+                                    </group>
+                                    <!-- <group colspan="4" col="12">
+                                        <field name="tg_bot_token"/>
+                                    </group> -->
+                                    <group colspan="4" col="12">
+                                        <field name="web_link"/>
+                                    </group>
+                                </group>
+                                <group col="12" colspan="12">
+                                    <group colspan="4" col="12">
+                                        <field name="can_autogenerate_policy"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="is_limit_validation_enabled" attrs="{'readonly':[('can_autogenerate_policy','=', True)]}" force_save="1"/>
+                                    </group>
+                                    <group colspan="4" col="12">
+                                        <field name="auto_send_resalt"/>
+                                    </group>
+                                </group>
+                                <group col="12" colspan="12">
+                                    <group colspan="12" col="12">
+                                        <field name="description"/>
+                                    </group>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="Contracts">
+                            <group colspan="12" col="12" class="!tw-items-center">
+                                <!--                                <group colspan="9" col="12">-->
+                                <!--                                    <group colspan="3" col="12">-->
+                                <!--                                        <field name="global_discount"/>-->
+                                <!--                                    </group>-->
+                                <!--                                </group>-->
+                                <group colspan="4" col="12">
+                                    <group colspan="2" col="12">
+                                        <button name="action_export" type="object" string="Export"
+                                                context="{'export_field': 'contract'}" class="btn-primary"/>
+                                    </group>
+                                    <group colspan="2" col="12">
+                                        <button name="action_import" type="object" string="Import"
+                                                context="{'import_field': 'contract'}" class="btn-primary"/>
+                                    </group>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="contract_ids" nolabel="1" widget="UICX2ManyField"
+                                           options="{ 'allowSelectors': '1', 'selectionChangedFieldMany': 'export_contract_ids' }">
+                                        <tree>
+                                            <field name="name"/>
+                                            <field name="date"/>
+                                        </tree>
+                                    </field>
+                                    <field name="export_contract_ids" nolabel="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="Template">
+                            <group colspan="12" col="12" class="!tw-items-center">
+                                <field name="selected_payer_template_ids" invisible="1"/>
+                                <group colspan="4" col="12">
+                                    <group colspan="2" col="12">
+                                        <button name="action_export_contract" type="object" string="Export"
+                                                class="btn-primary"/>
+                                    </group>
+                                    <group colspan="2" col="12">
+                                        <button name="action_import_contract" type="object" string="Import"
+                                                class="btn-primary"/>
+                                    </group>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="template_ids" widget="UICX2ManyField"
+                                           options="{ 'allowSelectors': '1', 'selectionChangedFieldMany': 'selected_payer_template_ids' }"/>
+                                    <!--                                    <field widget="x2many_multiview" view_mode="tree" name="selected_payer_template_ids"-->
+                                    <!--                                           options="{'allowSelectors': '1', 'loadActionMenus': '1'}"/>-->
+                                </group>
+                            </group>
+                        </page>
+                        <page name="Polices">
+                            <group colspan="12" col="12">
+                                <group colspan="4" col="12">
+                                    <group colspan="2" col="12">
+                                        <button name="action_export" type="object" string="Export"
+                                                context="{'export_field': 'policy'}" class="btn-primary"/>
+                                    </group>
+                                    <group colspan="2" col="12">
+                                        <button name="action_import" type="object" string="Import"
+                                                context="{'import_field': 'policy'}" class="btn-primary"/>
+                                    </group>
+                                </group>
+                                <group colspan="12" col="12">
+                                    <field name="policy_ids" nolabel="1" widget="UICX2ManyField"
+                                           options="{ 'allowSelectors': '1', 'selectionChangedFieldMany': 'export_policy_ids' }">
+                                        <tree>
+                                            <field name="full_name"/>
+                                            <field name="policy_number"/>
+                                            <field name="policy_amount"/>
+                                            <field name="template_id"/>
+                                            <field name="is_active"/>
+                                        </tree>
+                                    </field>
+                                    <field name="export_policy_ids" nolabel="1" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="Invoices">
+                            <field widget="x2many_multiview" view_mode="tree" name="payer_invoice_ids"
+                                   options="{'allowSelectors': '1', 'loadActionMenus': '1'}"/>
+                        </page>
+                    </notebook>
+                </group>
+
+                <group class="items-wrapper">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="message_ids"/>
+                        <field name="activity_ids"/>
+                    </div>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_payer_company_tree" model="ir.ui.view">
+        <field name="name">his.payer_company.tree</field>
+        <field name="model">his.payer_company</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="cooperation_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_payer_company_search" model="ir.ui.view">
+        <field name="name">his.payer_company.search</field>
+        <field name="model">his.payer_company</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_payer_company" model="ir.actions.act_window">
+        <field name="name">Payer Company</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.payer_company</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_child': 1, 'search_default_category_id': 1,
+            'default_is_company': True}
+        </field>
+        <field name="search_view_id" ref="his.view_payer_company_search"/>
+    </record>
+
+    <menuitem id="menu_payer_company"
+              name="Payer Company"
+              parent="his.menu_payer_configurations"
+              action="action_payer_company"
+              sequence="2"/>
+</odoo>

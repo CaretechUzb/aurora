@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_doctor_schedule_form" model="ir.ui.view">
+        <field name="name">his.doctor_schedule.form</field>
+        <field name="model">his.doctor_schedule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="12" col="12" class="items-wrapper">
+                        <group colspan="12" col="12" class="items-wrapper">
+                            <field name="company_id" class="readonly-input"/>
+                            <field name="doctor_id" class="readonly-input"/>
+                            <field name="date" readonly="1"/>
+                        </group>
+                        <group colspan="12" col="12" class="items-wrapper">
+                            <field name="working_periods_display"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_doctor_schedule_tree" model="ir.ui.view">
+        <field name="name">his.doctor_schedule.tree</field>
+        <field name="model">his.doctor_schedule</field>
+        <field name="arch" type="xml">
+            <tree delete="0" create="0">
+                <field name="doctor_id" readonly="1"/>
+                <field name="date"/>
+                <field name="working_periods_display"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_doctor_schedule_search" model="ir.ui.view">
+        <field name="name">his.doctor_schedule.search</field>
+        <field name="model">his.doctor_schedule</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="doctor_id"/>
+                <field name="company_id"/>
+                <field name="date"/>
+                <group expand="1" string="Group">
+                    <filter string="Doctor" name="group_doctor_id"
+                            context="{'group_by':'doctor_id'}"/>
+                    <filter string="Company" name="group_company_id"
+                            context="{'group_by':'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_doctor_schedule" model="ir.actions.act_window">
+        <field name="name">Doctor Schedule</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">his.doctor_schedule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{
+            'search_default_filter_child': 1,
+            'search_default_group_doctor_id': 1,
+            'range_search': 'date',
+            'range_search_default': 'today'}</field>
+        <field name="search_view_id" ref="his.view_doctor_schedule_search"/>
+        <field name="domain">[('working_periods_display', '!=', 'No records')]</field>
+    </record>
+
+    <menuitem id="his.menu_doctor_schedule"
+              name="Doctor Schedule List"
+              parent="his.menu_doctor_main"
+              action="his.action_doctor_schedule"
+              groups="his.group_his_admin,his.group_his_manager"
+              sequence="4"/>
+
+    <!-- Bulk delete from the list "Action" menu, managers only -->
+    <record id="action_server_doctor_schedule_bulk_delete" model="ir.actions.server">
+        <field name="name">Delete</field>
+        <field name="model_id" ref="his.model_his_doctor_schedule"/>
+        <field name="binding_model_id" ref="his.model_his_doctor_schedule"/>
+        <field name="binding_view_types">list</field>
+        <field name="groups_id" eval="[(4, ref('his.group_his_manager'))]"/>
+        <field name="state">code</field>
+        <field name="code">action = records.action_bulk_delete_unused()</field>
+    </record>
+</odoo>

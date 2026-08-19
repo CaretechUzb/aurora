@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record id="view_working_periods_tree" model="ir.ui.view">
+            <field name="name">his.doctor_working_periods.tree</field>
+            <field name="model">his.doctor_working_periods</field>
+            <field name="arch" type="xml">
+                <tree string="Working Periods" export_xlsx="0">
+                    <field name="start_time" widget="float-formate-time"/>
+                    <field name="end_time" widget="float-formate-time"/>
+                    <field name="company_id" 
+                            options="{
+                                'no_open':True,
+                            }"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_working_periods_form" model="ir.ui.view">
+            <field name="name">his.doctor_working_periods.form</field>
+            <field name="model">his.doctor_working_periods</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="start_time" widget="float-formate-time"/>
+                    <field name="end_time" widget="float-formate-time"/>
+                    <field name="company_id" 
+                            options="{
+                                'no_open':True,
+                            }"/>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_working_periods" model="ir.actions.act_window">
+            <field name="name">Working Periods</field>
+            <field name="res_model">his.doctor_working_periods</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
